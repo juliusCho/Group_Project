@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="no" value="${chatListVO.cha_list_no}"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/chat.css" />" />
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.1.1.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/jquery_ui/flick/jquery-ui.css" />" />
+<script type="text/javascript" src="<c:url value="/resources/jquery_ui/jquery-ui.js" />"></script>
+<script type="text/javascript">
+function checkMateChatRoom(){
+	$.ajax({
+		method:'POST',
+		url:'./checkMateChatRoom',
+		data:{cha_list_no:'${chatListVO.cha_list_no}', mem_no:'${chatListVO.mem_no}', 
+				mem_nick:'${chatListVO.mem_nick}', cha_mate_no:'${chatListVO.cha_mate_no}',
+				mem_pic:'${chatListVO.mem_pic}'}
+
+	}).done(function(){
+		alert('ㅎㅎ');
+	});
+}
+
+function loadChat(){
+	setTimeout("loadChat()", 1000);
+	$.getJSON('./loadChat', function(data){	
+		var items='<table>';
+		$.each(data,function(key,val){
+			items+='';
+			if(val['mem_no']=='${sessionScope.memberInfo.mem_no}'){
+				items +='>'+val['cha_content'];
+				if(val['cha_confirm']==1){
+					items+=' <span id="read_text" style="font-size:8px; color:#6b6b6b">[읽음]</span><br/>';
+				}else{
+					items+='<span id="read_text" style="font-size:8px; color:#6b6b6b">[읽지않음]</span><br/>';
+				}
+				items+='<span id="read_text" style="font-size:8px; color:#6b6b6b">'+val['cha_regdate']+'</span><br/><br/>';
+			}else{
+				items +='<span id="chat_content"> ' + val['cha_content'] +'</span><br/><span id="read_text" style="font-size:8px; color:#6b6b6b">'+val['cha_regdate']+'</span><br/><br/>';
+			}
+		});	
+		$('#display').html(items);
+	});
+}
+	
+function insertContent(){
+		//checkMateChatRoom();
+		$.ajax({
+			method:'POST',
+			url:'./insert',
+			data:{cha_content:$('#cha_content').val(), cha_list_no:'${no}'}
+		}).done(function(data){
+			$('#cha_content').val('');
+			loadChat();
+			/* var items='';
+			$.each(data, function(key,val) {
+				items += val['cha_content']+val['cha_regdate']+val['cha_confirm']+'<br/>';
+				items += val['cha_content']+'<br/>';
+			});	
+			$('#display').html(items);
+			$('#cha_content').val(''); */
+		});
+}
+window.onload= function(){
+	loadChat();
+}
+</script>
+</head>
+<body style="margin:0 auto; background-color:#e2edf3;">
+<div style="position:fixed; border-bottom:1px solid #4792b7; top:0px; padding:12px 0px 10px 20px; height:30px; width:100%; background-color:#b3cedd">${chatListVO.mem_nick}님과의 대화..</div>
+<%-- chat_list_no:${chatListVO.cha_list_no}<br/>
+mem_no:${chatListVO.mem_no}<br/>
+cha_mate_no: ${chatListVO.cha_mate_no}<br/>
+mem_pic :${chatListVO.mem_pic}
+ --%>
+	<div id="display" style="margin-top:60px;"></div>
+	<div id="insert_msg" style="position:fixed; width:100%; bottom:0px; margin:0px; background-color:#fff;"> 
+		<input type="hidden" value="${no}"/>
+		<table id="text_box" style="width:100%;">
+			<tr>
+				<td style="borer:1px solid red;">
+					<textarea type="text" id="cha_content" style="width:100%; border:1px solid white; height:50px;" name="cha_content" required="required"></textarea>
+				</td>
+				<td style="width:50px;" align="center"><input type="button" value="전송" onclick="insertContent();"/></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

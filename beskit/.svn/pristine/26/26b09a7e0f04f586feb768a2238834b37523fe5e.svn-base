@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chain.sjl.friend.FriendDAO">
+	<select id="getFriendList" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select m.mem_no, m.mem_name, m.mem_nick, m.mem_id, m.mem_pic
+		from t_friend f join t_member m
+		on f.fri_no = m.mem_no
+		where f.mem_no=#{mem_no}
+	</select>
+	
+	<select id="getLoginMemberList" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select m.mem_no, m.mem_name, m.mem_nick
+		from t_friend f join t_member m
+		on f.fri_no = m.mem_no
+		where f.mem_no=#{mem_no} and m.mem_status=1
+	</select>
+	
+	<select id="findFriend" parameterType="String" resultType="com.chain.sjl.member.MemberVO">
+		select mem_name, mem_id, mem_no
+		from t_member
+		where mem_id=#{mem_id}
+	</select>
+	
+	<select id="getFriendInfo" parameterType="String" resultType="com.chain.sjl.member.MemberVO">
+		select mem_name, mem_nick, mem_email, mem_pic ,mem_no
+		from t_member 
+		where mem_id=#{mem_id}
+	</select>
+	
+	<insert id="insertWaitingFriend" parameterType="java.util.Map">
+		insert into t_waiting_friend(mem_no, waiting_fri_no)
+		values(#{waiting_fri_no},#{mymem_no})
+	</insert>
+	
+	<select id="getWaitingFriends" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select m.mem_name, m.mem_nick, m.mem_no, m.mem_pic
+		from t_waiting_friend w join t_member m
+		on w.waiting_fri_no=m.mem_no
+		where w.mem_no=#{mem_no}
+	</select>
+	
+	<insert id="acceptFriend" parameterType="java.util.Map">
+		insert into t_friend(mem_no,fri_no)
+		values(#{mem_no},#{waiting_fri_no})
+	</insert>
+	
+	<insert id="acceptFriend2" parameterType="java.util.Map">
+		insert into t_friend(mem_no,fri_no)
+		values(#{waiting_fri_no},#{mem_no})
+	</insert>
+	
+	<delete id="deleteWaitingFriend" parameterType="java.util.Map">
+		delete from t_waiting_friend
+		where mem_no=#{mem_no} and waiting_fri_no=#{waiting_fri_no}
+	</delete>
+	
+	<delete id="deleteFriend" parameterType="java.util.Map">
+		delete from t_friend
+		where mem_no=#{mymem_no} and fri_no=#{fri_no}
+	</delete>
+	
+	<delete id="deleteFriend2" parameterType="java.util.Map">
+		delete from t_friend
+		where mem_no=#{fri_no} and fri_no=#{mymem_no}
+	</delete>
+</mapper>

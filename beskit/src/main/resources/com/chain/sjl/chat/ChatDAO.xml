@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chain.sjl.chat.ChatDAO">
+	<insert id="insertContent" parameterType="ChatVO">
+		insert into t_chat(cha_no, cha_content, mem_no, cha_list_no)
+		values(seq_chat.nextval, #{cha_content}, #{mem_no}, #{cha_list_no})
+	</insert>
+	
+	<select id="getChatList" parameterType="long" resultType="ChatVO">
+		select cha_no, cha_content, to_char(cha_regdate,'MM-DD HH24:MI') as cha_regdate, cha_confirm, mem_no, cha_list_no
+		from t_chat
+		where cha_list_no=#{cha_list_no}
+		order by cha_no desc
+	</select>
+	
+	<update id="updateRegdate" parameterType="long">
+		update t_chat_list
+		set cha_list_regdate = sysdate
+		where cha_list_no=#{cha_list_no}
+	</update>
+	
+	<select id="checkMateChatRoom" parameterType="java.util.Map" resultType="int">
+		select count(*)
+		from t_chat_list
+		where mem_no=#{mem_no} and cha_mate_no=#{cha_mate_no}
+	</select>
+	
+	<insert id="insertChatList" parameterType="com.chain.sjl.chatlist.ChatListVO">
+		insert into t_chat_list(cha_list_no, mem_no, mem_nick, cha_mate_no, mem_pic)
+		values(#{cha_list_no}, #{mem_no},#{mem_nick},#{cha_mate_no},#{mem_pic})
+	</insert>
+	
+	<update id="updateConfirm" parameterType="java.util.Map">
+		update t_chat
+		set cha_confirm=1
+		where cha_list_no=#{cha_list_no} and mem_no=#{mem_no}
+	</update>
+</mapper>

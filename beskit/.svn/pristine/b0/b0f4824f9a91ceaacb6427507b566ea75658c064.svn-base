@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<fmt:bundle basename="${sessionScope.basename}">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"  src="../../resources/js/jquery-3.1.1.js" ></script>
+<script type="text/javascript">
+function goUrl(mem_no){
+	opener.location.href='../../profile/'+mem_no+'/';
+	self.close();
+}
+
+
+$(function(){
+	$('#findFriend').click(function(){ 
+		$.ajax({
+			method:'POST',
+			url:'./findFriend',
+			data:{mem_id:$('#mem_id').val()}
+		}).done(function(data){
+			if(data!==''){
+				var item='<br/><input type="button" value="'+data.mem_name+'" onclick="goUrl('+data.mem_no+');"/>';
+				$('#display').html(item);
+			}else{
+				$('#display').html('<fmt:message key="friend.noSearchMsg"/>');			
+			}
+		});	
+		
+	});
+});
+
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<fmt:message key="friend.idAskMsg"/><br/>
+<input type="text" id="mem_id" name="mem_id" required="required"/>
+<input type="button" id="findFriend" value="<fmt:message key="friend.search"/>"/>
+<div id="display"></div>
+</body>
+</fmt:bundle>
+</html>

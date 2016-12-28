@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<script>
+	//친구삭제
+	function deleteFriend(){
+	   var value= confirm('정말로 삭제하시겠습니까?');
+	   if(value){
+	      $.ajax({
+	         method:'GET',
+	         url:'../../friend/${mem_no}/deleteFriend',
+	         data:{mymem_no:'${sessionScope.memberInfo.mem_no}'}
+	      }).done(function(data){
+	         if(data==2){
+	            alert('삭제 되었습니다.');
+	            location.href="./";
+	         }else{
+	            alert('에러 입니다.');
+	         }
+	      });   
+	   }else{
+	      return;
+	   }
+	}
+	
+	//친구 추가(waiting list)
+	function insertFriend(){
+	   $.ajax({
+	      method:'GET',
+	      url:'../../friend/${mem_no}/insertWaitingFriend',
+	      data:{mymem_no:'${sessionScope.memberInfo.mem_no}'}
+	   }).done(function(data){
+	      if(data.msg=='성공'){
+	         alert('등록 되었습니다.');
+	         location.href="./";
+	      }else{
+	         alert('상대방의 수락을 기다리는중..');
+	      }
+	   });      
+	}
+</script>

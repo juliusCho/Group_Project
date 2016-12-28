@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"  src="../../resources/js/jquery-3.1.1.js" ></script>
+<script type="text/javascript">
+function goUrl(mem_no){
+	opener.location.href='../../profile/'+mem_no+'/';
+	self.close();
+}
+
+
+$(function(){
+	$('#findFriend').click(function(){ 
+		$.ajax({
+			method:'POST',
+			url:'./findFriend',
+			data:{mem_id:$('#mem_id').val()}
+		}).done(function(data){
+			if(data!==''){
+				var item='<br/><input type="button" value="'+data.mem_name+'" onclick="goUrl('+data.mem_no+');"/>';
+				$('#display').html(item);
+				//$('#display').html('<a href="../../profile/'+data.mem_no+'/">'+data.mem_name+'('+data.mem_id+')</a>');
+				
+			}else{
+				$('#display').html('검색 결과가 없습니다.');			
+			}
+		});	
+		
+	});
+});
+
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+찾을 친구의 ID를 입력해주세요^o^<br/>
+<input type="text" id="mem_id" name="mem_id" required="required"/>
+<input type="button" id="findFriend" value="찾기"/>
+<div id="display"></div>
+</body>
+</html>

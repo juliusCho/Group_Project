@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<script>
+	$(function() {
+		$("#left_menu a").button();
+		$("a").click(function(event) {
+			event.preventDefault();
+		});
+	});
+</script>
+	<div id="sub_body">
+		<div id="main_left" align="center">
+			<div id="left_menu">
+				<h1>FRIENDS</h1>
+				<div id="profile">
+					<c:choose>
+						<c:when test="${sessionScope.memberInfo.mem_pic ne ''}">
+							<img src="<c:url value="/member/${sessionScope.memberInfo.mem_pic}" />"/>
+						</c:when>
+						<c:otherwise>
+							<img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" />
+						</c:otherwise>
+					</c:choose>
+					<br />
+					<c:if test="${sessionScope.memberInfo.mem_no==mem_no}">별명: <span id="profileInfo">${sessionScope.memberInfo.mem_nick}</span>
+						<br />
+						<c:if test="${sessionScope.memberInfo.mem_country==0}">국적: <span id="profileInfo">한국</span>
+						<br />
+						</c:if>
+						<c:if test="${sessionScope.memberInfo.mem_country==1}">국적: <span id="profileInfo">Foreigner</span>
+						<br />
+						</c:if>
+						<c:if test="${sessionScope.memberInfo.mem_gender==0}">성별: <span id="profileInfo">남</span>
+						<br />
+						</c:if>
+						<c:if test="${sessionScope.memberInfo.mem_gender==1}">성별: <span id="profileInfo">여</span>
+						<br />
+						</c:if>
+						<span id="profileInfo">${sessionScope.memberInfo.mem_email}</span>
+						<br />
+					</c:if>
+					<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">별명: <span id="profileInfo">${memberBasicInfo.mem_nick}</span>
+						<br />
+						<c:if test="${memberBasicInfo.mem_country==0}">국적: <span id="profileInfo">한국</span>
+							<br />
+						</c:if>
+						<c:if test="${memberBasicInfo.mem_country==1}">국적: <span id="profileInfo">Foreigner</span>
+						<br />
+						</c:if>
+						<c:if test="${memberBasicInfo.mem_gender==0}">성별: <span id="profileInfo">남</span>
+						<br />
+						</c:if>
+						<c:if test="${memberBasicInfo.mem_gender==1}">성별: <span id="profileInfo">여</span>
+						<br />
+						</c:if>
+						<span id="profileInfo">${memberBasicInfo.mem_email}</span>
+						<br/>
+					</c:if>
+				</div>
+				<br/>
+				<c:if test="${sessionScope.memberInfo.mem_no==mem_no}">
+					<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/'">친구목록</a>
+					<!--<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/waitingFriends'">친구요청목록</a> -->
+					<a onclick="javascript:confirm_pw(${sessionScope.memberInfo.mem_no});">회원정보수정</a>
+				</c:if>
+				<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">
+					<c:if test="${result == 0}">
+						<li><input type="button" value="친구추가"
+							onclick="insertFriend();" /></li>
+						<br />
+					</c:if>
+					<c:if test="${result==1}">
+						<li><input type="button" value="친구삭제"
+							onclick="deleteFriend();" /></li>
+						<br />
+					</c:if>
+				</c:if>
+				<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">
+					<li><input type="button" value="채팅하기" onclick="startChat();" /></li>
+				</c:if>
+			</div>
+		</div>

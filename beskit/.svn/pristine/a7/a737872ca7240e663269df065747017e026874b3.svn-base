@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chain.sjl.chatlist.ChatListDAO">
+	<select id="getChatList" parameterType="long" resultType="ChatListVO">
+		select cha_list_no, mem_no, mem_nick, cha_list_regdate, cha_mate_no, mem_pic
+		from t_chat_list
+		where mem_no=#{mem_no} 
+		order by cha_list_regdate desc
+	</select>
+	
+	<insert id="insertChatList" parameterType="ChatListVO">
+		insert into t_chat_list(cha_list_no, mem_no, mem_nick, cha_mate_no, mem_pic)
+		values(#{cha_list_no}, #{mem_no},#{mem_nick},#{cha_mate_no},#{mem_pic})
+	</insert>
+	
+	<insert id="insertChatList2" parameterType="ChatListVO">
+		insert into t_chat_list(cha_list_no, mem_no, mem_nick, cha_mate_no, mem_pic)
+		values(#{cha_list_no}, #{mem_no},#{mem_nick},#{cha_mate_no},#{mem_pic})
+	</insert>
+	
+	<select id="getMemberInfo" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select mem_no, mem_country, mem_gender, mem_id, mem_name, mem_phone, mem_email,
+				mem_nick, mem_pic
+		from t_member
+		where mem_no=#{mem_no}
+	</select>
+	
+	<select id="chatStatus" parameterType="long" resultType="int">
+		select count(*) from t_chat_list where cha_list_no=#{cha_list_no}
+	</select>
+	
+	<delete id="deleteChatRoom" parameterType="java.util.Map">
+		delete from t_chat_list
+		where mem_no=#{mem_no} and cha_mate_no=#{cha_mate_no}
+	</delete>
+	
+	<select id="checkChatList" parameterType="long" resultType="ChatListVO">
+		select mem_no
+		from t_chat_list
+		where cha_list_no=#{cha_list_no}
+	</select>
+	
+	<select id="getNewMsg" parameterType="java.util.Map" resultType="int">
+		select count(*) from t_chat
+		where mem_no!=#{mem_no} and cha_confirm=0 and cha_list_no=#{cha_list_no}
+	</select>
+</mapper>	
+

@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<fmt:bundle basename="${sessionScope.basename}">
+	<div id="main_footer" align="center">
+		<table>
+			<tr>
+				<td align="left">
+					<a href="/sjl/member/kor"><img src="<c:url value="/resources/img/koreanFlag.png"/>"/></a>
+					&nbsp;&nbsp;<a href="/sjl/member/eng"><img src="<c:url value="/resources/img/engFlag.png"/>"/></a>
+				</td>
+				<td align="center"><a href=""><fmt:message key="footer.join"/></a></td>
+				<td align="center"><a href=""><fmt:message key="footer.login"/></a></td>
+				<td align="center"><a href=""><fmt:message key="footer.mobile"/></a></td>
+				<td align="center"><a href=""><fmt:message key="footer.findfriend"/></a></td>
+				<td align="center"><a href=""><fmt:message key="footer.protectprivacy"/></a></td>
+				<td align="center"><a href=""><fmt:message key="footer.form"/></a></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="7" id="corporate">© 2016 BeSkit</td>
+			</tr>	
+		</table>
+	</div>
+</fmt:bundle>
+</div>
+</body>
+</html>

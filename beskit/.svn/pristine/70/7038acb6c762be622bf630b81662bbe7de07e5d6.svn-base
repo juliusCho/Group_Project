@@ -1,0 +1,106 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="<c:url value="/resources/js/jquery-3.1.1.js"/>" ></script>
+<script type="text/javascript">
+function startChat(cha_list_no, cha_mate_no, mem_nick, mem_pic){
+	$.ajax({
+		method:'POST',
+		url:'../../chatlist/${sessionScope.memberInfo.mem_no}/insert',
+		data:{mem_no:'${sessionScope.memberInfo.mem_no}', mem_nick:mem_nick, cha_mate_no:cha_mate_no, mem_pic:mem_pic}
+	}).done(function (data){
+		if(data!==''){
+		}else{
+			alert('에러발생입니다');
+		}
+	}); 
+} 
+
+function openChatRoom(cha_list_no, cha_mate_no, mem_nick, mem_pic){
+	startChat(cha_list_no, cha_mate_no, mem_nick, mem_pic);
+	
+	var myForm = document.getElementById(cha_mate_no);
+	var title = 'popForm';
+	var url ='../../chat/${sessionScope.memberInfo.mem_no}/'+cha_list_no+'/';
+		window.open('' ,title, 
+			 'toolbar=no,location=no,status=no,menubar=no,scrollbar=yes,resizable=no,width=400,height=600'); 
+	 	myForm.action =url;
+	 	myForm.method='post';
+	 	myForm.target=title;
+	 	myForm.cha_list_no.value=cha_list_no;
+	 	myForm.cha_mate_no.value=cha_mate_no;
+	 	myForm.mem_nick.value=mem_nick;
+	 	myForm.mem_pic.value=mem_pic;
+		myForm.submit();
+	/*var settings ='toolbar=no,location=no,status=no,menubar=no,scrollbar=yes,' +
+	 'resizable=no,width=400,height=600';
+	var path = window.open('../../chat/${sessionScope.memberInfo.mem_no}/'+cha_list_no+'/?mem_nick='+mem_nick,'',settings);*/	
+	
+}
+function updateConfirm(cha_mate_no){
+	$.ajax({
+		method:'GET',
+		url:'./updateConfirm',
+		data:{cha_mate_no:cha_mate_no}
+	}).done(function(){});	
+}
+
+function removeChatRoom(cha_mate_no){
+	if(confirm('정말로 삭제하시겠습니까?')){
+		updateConfirm(cha_mate_no);
+		
+		$.ajax({
+			method:'GET',
+			url:'./removeChatRoom',
+			data:{cha_mate_no:cha_mate_no}
+		}).done(function(){
+			location.href='./';
+		});
+	}else{
+		return;
+	}
+}
+</script>
+</head>
+<body>
+<a href="../../article/${sessionScope.memberInfo.mem_no}/">Home</a>
+<hr/>
+<h1>~채팅 리스트~</h1>
+<hr/>
+<table border="1">
+<c:forEach var="vo" items="${list}">
+<form id="${vo.cha_mate_no}">
+<input type="hidden" name="cha_list_no" value="${vo.cha_list_no}"/>
+<input type="hidden" name="cha_mate_no" value="${vo.cha_mate_no}"/>
+<input type="hidden" name="mem_nick" value="${vo.mem_nick}"/>
+<input type="hidden"name="mem_pic" value="${vo.mem_pic}"/>
+</form>
+<tr>
+	<td>＊</td>
+	<td style="width:50px; border:1px solid #3383bb; 
+			  border-radius:75px;">
+			  <c:choose>
+				  <c:when test="${vo.mem_pic ne null}">
+				 	 <img src="<c:url value="/member/${vo.mem_pic}"/> "></td>
+				  </c:when>
+				  <c:otherwise>
+				  	 <img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>"/>
+				  </c:otherwise>
+			  </c:choose>
+	<td>${vo.mem_nick}
+		<c:if test="${vo.newmsg !=0}">
+			<span style="color: red">(${vo.newmsg})</span></td>
+		</c:if>
+	<td>${vo.cha_list_regdate}</td>
+	<td><input type="button" value="채팅하기" onclick="openChatRoom('${vo.cha_list_no}','${vo.cha_mate_no}','${vo.mem_nick}','${vo.mem_pic}');"/></td>
+	<td><input type="button" value="채팅삭제" onclick="removeChatRoom('${vo.cha_mate_no}');"></td>
+</tr>
+</c:forEach>
+</table>
+</body>
+</html>

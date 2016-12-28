@@ -1,0 +1,70 @@
+### \ud5e4\ub354
+header.home=Home
+header.mypage=MyPage
+header.square=MeetUp Square
+header.findfriend=Search Friend
+header.chatting=Chat
+
+### \ud48b\ud130
+footer.join=Register
+footer.login=Login
+footer.mobile=Mobile
+footer.findfriend=Search Friend
+footer.protectprivacy=Privacy Protection
+footer.form=Terms & Policy
+
+### \ub85c\uadf8\uc778
+
+
+### \ud68c\uc6d0\uac00\uc785
+join.title=REGISTRATION
+join.classify=Classification
+join.korean=Korean
+join.foreigner=Foreigner
+join.male=Male
+join.female=Female
+join.id=ID
+join.idconfirm=ID Check
+join.idMsg=Please make sure your ID be wihtin 6~20 letters.
+join.pw=Password
+join.pwMsg=Please make sure your PW be wihtin 10~20 letters.
+join.confirm=PW Again
+join.confirmQ=PW Question
+join.chooseQ=Choose Question
+join.choose1=What's my motto?
+join.choose2=What was my childhood nickname?
+join.choose3=What was my best middle-school buddy's name?
+join.choose4=When is my parents' wedding anniversary?
+join.choose5=When is my first lover's birthday?
+join.choose6=Type your own
+join.qAns=PW Answer
+join.name=Name
+join.email=Email
+join.emailChoose=Choose Email
+join.emailChoose7=Type your own
+join.nick=Nickname
+join.profilePic=Profile Picture
+join.noImg=Cannot load your image
+join.uploadImg=Upload Photo
+join.imgDelete=Delete Photo
+join.join=Register
+join.rewrite=Rewrite
+join.cancel=Cancel
+
+join.noKorean=You can only use English
+join.phone=Phone
+join.choose=Choose
+join.wrongPhone=Incorrect format of phone
+join.joinedId=This ID has already been taken
+join.joinOkId=You may use this ID
+join.idLengthMsg=Please make sure your ID be within 6~20 letters
+join.pwMatched=Both PWs are matched
+join.pwNoMatch=PWs are not matched
+join.pwLengthMsg=Please make sure your PW be within 10~20 letters
+join.nickLengthMsg=Please make sure your Nickname be within 10 letters
+join.joinedNick=This nickname is already in use
+join.nickOkUse=You may use this nickname
+
+
+### \uac8c\uc2dc\ud310
+

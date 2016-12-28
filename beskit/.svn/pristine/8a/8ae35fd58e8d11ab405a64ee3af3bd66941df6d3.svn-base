@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="no" value="${chatListVO.cha_list_no}"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="<c:url value="/resources/js/jquery-3.1.1.js" />"></script>
+<script type="text/javascript">
+function checkMateChatRoom(){
+	$.ajax({
+		method:'POST',
+		url:'./checkMateChatRoom',
+		data:{cha_list_no:'${chatListVO.cha_list_no}', mem_no:'${chatListVO.mem_no}', 
+				mem_nick:'${chatListVO.mem_nick}', cha_mate_no:'${chatListVO.cha_mate_no}',
+				mem_pic:'${chatListVO.mem_pic}'}
+
+	}).done(function(){
+		alert('ㅎㅎ');
+	});
+}
+
+function loadChat(){
+	setTimeout("loadChat()", 1000);
+	$.getJSON('./loadChat', function(data){	
+		var items='<table>';
+		$.each(data,function(key,val){
+			items+='';
+			if(val['mem_no']=='${sessionScope.memberInfo.mem_no}'){
+				items +='>'+val['cha_content'];
+				if(val['cha_confirm']==1){
+					items+=' [읽음]<br/>';
+				}else{
+					items+=' [읽지않음]<br/>';
+				}
+				items+='-'+val['cha_regdate']+'<br/><br/>';
+			}else{
+				items +='상대방: '+val['cha_content']+'<br/>-'+val['cha_regdate']+'<br/><br/>';
+			}
+		});	
+		$('#display').html(items);
+	});
+}
+	
+function insertContent(){
+		//checkMateChatRoom();
+		$.ajax({
+			method:'POST',
+			url:'./insert',
+			data:{cha_content:$('#cha_content').val(), cha_list_no:'${no}'}
+		}).done(function(data){
+			$('#cha_content').val('');
+			loadChat();
+			/* var items='';
+			$.each(data, function(key,val) {
+				items += val['cha_content']+val['cha_regdate']+val['cha_confirm']+'<br/>';
+				items += val['cha_content']+'<br/>';
+			});	
+			$('#display').html(items);
+			$('#cha_content').val(''); */
+		});
+}
+window.onload= function(){
+	loadChat();
+}
+</script>
+</head>
+<body style="margin:0 auto;">
+<div style="position:fixed; border-bottom:1px solid #4792b7; top:0px; padding:10px 0px 10px 0px; height:30px; width:400px; background-color:#d7f2ff">${chatListVO.mem_nick}님과의 대화..</div>
+<%-- chat_list_no:${chatListVO.cha_list_no}<br/>
+mem_no:${chatListVO.mem_no}<br/>
+cha_mate_no: ${chatListVO.cha_mate_no}<br/>
+mem_pic :${chatListVO.mem_pic}
+ --%>
+	<div id="display"></div>
+	<div style="position:relative;height:30px;">
+		<div id="insert_msg"> 
+			<input type="hidden" value="${no}"/>
+			<input type="text" id="cha_content" name="cha_content" required="required"/>
+			<input type="button" value="전송" onclick="insertContent();"/>
+		</div>
+	</div>
+</body>
+</html>

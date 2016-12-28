@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<!-- 프로필 script -->
+<%@ include file="/resources/jsp/script/profile_script.jsp" %>
+
+<!-- 공통 헤더 -->
+<%@ include file="/resources/jsp/header.jsp" %>
+
+<!-- 프로필 왼쪽메뉴 -->
+<%@ include file="/resources/jsp/left_menu/profile_left.jsp" %>
+
+<!-- 회원정보페이지용 -->
+<form name="confirm_pw_form" method="POST" action="../../user/${sessionScope.memberInfo.mem_no}/mypage">
+<input type="hidden" name="mem_country" value="${sessionScope.memberInfo.mem_country}"/>
+<input type="hidden" name="mem_gender" value="${sessionScope.memberInfo.mem_gender}"/>
+<input type="hidden" name="mem_id" value="${sessionScope.memberInfo.mem_id}"/>
+<input type="hidden" name="mem_pwquestion" value="${sessionScope.memberInfo.mem_pwquestion}"/>
+<input type="hidden" name="mem_pwanswer" value="${sessionScope.memberInfo.mem_pwanswer}"/>
+<input type="hidden" name="mem_name" value="${sessionScope.memberInfo.mem_name}"/>
+<c:if test="${sessionScope.memberInfo.mem_country eq 0}">
+	<input type="hidden" name="mem_phone" value="${sessionScope.memberInfo.mem_phone}"/>
+</c:if>
+<input type="hidden" name="mem_email" value="${sessionScope.memberInfo.mem_email}"/>
+<input type="hidden" name="mem_nick" value="${sessionScope.memberInfo.mem_nick}"/>
+<c:if test="${sessionScope.memberInfo.mem_pic ne ''}">
+	<input type="hidden" name="mem_pic" value="${sessionScope.memberInfo.mem_pic}"/>
+</c:if>
+</form>
+
+<!-- 프로필 리스트 -->
+<form name="popForm">
+<input type="hidden" name="cha_mate_no" value="${memberBasicInfo.mem_no}"/>
+<input type="hidden" name="mem_nick" value="${memberBasicInfo.mem_nick}"/>
+<input type="hidden" name="mem_pic" value="${memberBasicInfo.mem_pic}"/>
+</form>
+	<div id="main_center">
+		<c:if test="${result eq 1 || pageMem_no eq sessionScope.memberInfo.mem_no}">
+			<table id="insert_text">
+				<tr>
+					<td id="info_text">글을 작성하여 친구들과 공유하세요!</td>
+				</tr>
+				<tr class="picUpload" id="insertImg_text_td">
+					<td valign="bottom"><a id="insertImg_text"
+						style="cursor: pointer;"
+						onclick="location.href='javascript:insertImg();'"> <span
+							class="ui-icon ui-icon-image"></span> 사진 첨부
+					</a></td>
+				</tr>
+				<tr>
+					<td id="pic_input" align="center"><input type="hidden"
+						id="art_pic" /></td>
+				</tr>
+				<tr>
+					<td id="text_box"><textarea cols="68" rows="5"
+							id="art_content"></textarea><span id="artTextLength"></span></td>
+				</tr>
+				<tr>
+					<td id="btn_insert" align="right" valign="top"><input
+						type="button" value="작성" id="btnInsertArticle" /></td>
+				</tr>
+			</table>
+		</c:if>
+		<div id="articleList"></div>
+		<div id="articleForUpdate"></div>
+		<div id="moreArtBtn"></div>
+	</div>
+<!-- 공통 우측메뉴 -->
+<%@ include file="/resources/jsp/right_menu.jsp" %>		
+		
+<!-- 공통 풋터 -->
+<%@ include file="/resources/jsp/footer.jsp" %>

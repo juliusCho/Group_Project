@@ -1,0 +1,100 @@
+한  글           = sjl/member/kor
+영  문           = sjl/member/eng
+가입정보입력/확인= sjl/member/join
+ID 확인          = sjl/member/idCheck
+닉네임확인       = sjl/member/nickCheck
+프사삽입         = sjl/member/insertPic
+이미지로딩       = sjl/member/inputPic/{mem_pic}
+회원가입         = sjl/member/joinFinal 
+로그인           = sjl/member/login
+ID 찾기(전화)    = sjl/member/find_id
+ID 찾기(이메일)  = sjl/member/find_id2
+PW   찾기        = sjl/member/find_pw
+비번찾기 질문    = sjl/member/confirm_pwquestion
+임시비번저장     = sjl/member/findAndChange_pw
+임시비번메일발송 = sjl/member/sendmail
+새 채팅 알림     = sjl/member/newMessage
+개인정보보호약관 = sjl/member/privacy
+이용약관         = sjl/member/policy
+로그아웃         = sjl/member/logout
+
+
+회원정보접근비번체크= sjl/user/{mem_no}/confrim_pw
+회원정보            = sjl/user/{mem_no}/mypage
+회원정보수정 및 확인= sjl/user/{mem_no}/update
+닉네임확인          = sjl/user/{mem_no}/nickCheck
+프사변경            = sjl/user/{mem_no}/insertPic
+회원정보수정        = sjl/user/{mem_no}/updateFinal
+회원탈퇴            = sjl/user/{mem_no}/leave
+
+
+친구목록           = sjl/friend/{mem_no}/
+현재접속중 친구목록= sjl/friend/{mem_no}/getLoginMemberList
+친구검색           = sjl/friend/{mem_no}/findFriend
+친구프로필         = sjl/friend/{mem_no}/getFriendInfo
+친구요청           = sjl/friend/{mem_no}/insertWaitingFriend
+친구요청목록       = sjl/friend/{mem_no}/waitingFriends
+친구요청거절       = sjl/friend/{mem_no}/deleteWaitingFriend
+친구삭제           = sjl/friend/{mem_no}/deleteFriend
+
+
+홈            = sjl/article/{mem_no}/
+게시글목록    = sjl/article/{mem_no}/listArticle
+추천게시글분류= sjl/article/{mem_no}/checkArtLike
+게시글사진추가= sjl/article/{mem_no}/insertImg
+게시글작성    = sjl/article/{mem_no}/insertArticle
+게시글수정    = sjl/article/{mem_no}/updateArticle
+게시글개별출력= sjl/article/{mem_no}/getArticle
+게시글삭제    = sjl/article/{mem_no}/deleteArticle
+게시글추천    = sjl/article/{mem_no}/likeArticle
+게시글추천취소= sjl/article/{mem_no}/hateArticle
+댓글목록      = sjl/article/{mem_no}/{art_no}
+추천댓글분류  = sjl/article/{mem_no}/{art_no}/checkComLike
+댓글달기      = sjl/article/{mem_no}/{art_no}/insertComment
+댓글수정      = sjl/article/{mem_no}/{art_no}/updateComment
+댓글삭제      = sjl/article/{mem_no}/{art_no}/deleteComment
+댓글추천      = sjl/article/{mem_no}/{art_no}/likeComment
+댓글추천취소  = sjl/article/{mem_no}/{art_no}/hateComment
+
+
+회원페이지    = sjl/profile/{mem_no}/
+게시글목록    = sjl/profile/{mem_no}/listArticle
+추천게시글분류= sjl/profile/{mem_no}/checkArtLike
+게시글사진추가= sjl/profile/{mem_no}/insertImg
+게시글작성    = sjl/profile/{mem_no}/insertArticle
+게시글수정    = sjl/profile/{mem_no}/updateArticle
+게시글개별출력= sjl/profile/{mem_no}/getArticle
+게시글삭제    = sjl/profile/{mem_no}/deleteArticle
+게시글추천    = sjl/profile/{mem_no}/likeArticle
+게시글추천취소= sjl/profile/{mem_no}/hateArticle
+댓글목록      = sjl/profile/{mem_no}/{art_no}
+추천댓글분류  = sjl/profile/{mem_no}/{art_no}/checkComLike
+댓글달기      = sjl/profile/{mem_no}/{art_no}/insertComment
+댓글수정      = sjl/profile/{mem_no}/{art_no}/updateComment
+댓글삭제      = sjl/profile/{mem_no}/{art_no}/deleteComment
+댓글추천      = sjl/profile/{mem_no}/{art_no}/likeComment
+댓글추천취소  = sjl/profile/{mem_no}/{art_no}/hateComment
+
+
+만남의광장    = sjl/square/{mem_no}/
+게시글목록    = sjl/square/{mem_no}/listArticle
+추천게시글분류= sjl/square/{mem_no}/checkArtLike
+게시글추천    = sjl/square/{mem_no}/likeArticle
+게시글추천취소= sjl/square/{mem_no}/hateArticle
+댓글목록      = sjl/square/{mem_no}/{art_no}
+추천댓글분류  = sjl/square/{mem_no}/{art_no}/checkComLike
+댓글달기      = sjl/square/{mem_no}/{art_no}/insertComment
+댓글수정      = sjl/square/{mem_no}/{art_no}/updateComment
+댓글삭제      = sjl/square/{mem_no}/{art_no}/deleteComment
+댓글추천      = sjl/square/{mem_no}/{art_no}/likeComment
+댓글추천취소  = sjl/square/{mem_no}/{art_no}/hateComment
+
+
+채팅방목록 = sjl/chatlist/{mem_no}/
+채팅방추가 = sjl/chatlist/{mem_no}/insert
+채팅방삭제 = sjl/chatlist/{mem_no}/removeChatRoom
+채팅방변경 = sjl/chatlist/{mem_no}/updateConfirm
+
+
+채팅글목록   = sjl/chat/{mem_no}/{cha_list_no}/
+채팅  입력   = sjl/chat/{mem_no}/{cha_list_no}/insert

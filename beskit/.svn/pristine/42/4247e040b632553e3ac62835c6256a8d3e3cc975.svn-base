@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!-- 리스트 스크립트 -->
+<%@ include file="/resources/jsp/script/join_script.jsp"%>
+
+<!-- 공통 헤더 -->
+<%@ include file="/resources/jsp/header.jsp"%>
+
+<!-- 리스트 왼쪽메뉴 -->
+<%@ include file="/resources/jsp/left_menu/join_left.jsp"%>
+	<div id="main_center">
+		<form method="post" action="joinFinal">
+			<input type="hidden" name="mem_country" value="${memberVO.mem_country}"/>
+			<input type="hidden" name="mem_gender" value="${memberVO.mem_gender}"/>
+			<input type="hidden" name="mem_id" value="${memberVO.mem_id}"/>
+			<input type="hidden" name="mem_pw" value="${pw}"/>
+			<input type="hidden" name="mem_pwquestion" value="${memberVO.mem_pwquestion}"/>
+			<input type="hidden" name="mem_pwanswer" value="${memberVO.mem_pwanswer}"/>
+			<input type="hidden" name="mem_name" value="${memberVO.mem_name}"/>
+
+			<c:choose>
+				<c:when test="${phone eq ''}">
+					<input type="hidden" name="mem_phone" value=""/>
+				</c:when>
+				<c:otherwise>
+					<input type="hidden" name="mem_phone" value="${phone1}-${phone2}-${phone3}"/>
+				</c:otherwise>
+			</c:choose>
+
+			<input type="hidden" name="mem_email" value="${email1}@${email2}"/>
+			<input type="hidden" name="mem_nick" value="${memberVO.mem_nick}"/>
+			<input type="hidden" name="mem_pic" value="${memberVO.mem_pic}"/>
+			
+			<table id="join_table" align="center">
+				<tr>
+					<td colspan="2" id="join_table_title">회원가입확인</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >회원 분류</th>
+					<td id="join_table_td02">${country}</th>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >성별 </th>
+					<td id="join_table_td02">${gender}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >아이디</th>
+					<td id="join_table_td02">${memberVO.mem_id}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >비밀번호</th>
+					<td id="join_table_td02">${pwhide}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >비밀번호 확인 질문</th>
+					<td id="join_table_td02">${memberVO.mem_pwquestion}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >비밀번호 질문 답</th>
+					<td id="join_table_td02">${memberVO.mem_pwanswer}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >이름</th>
+					<td id="join_table_td02">${memberVO.mem_name}</td>
+				</tr>
+				<c:if test="${phone ne ''}">
+					<tr>
+						<th id="join_table_td01" >전화번호</th>
+						<td id="join_table_td02">${phone}</td>
+					</tr>
+				</c:if>
+				<tr>
+					<th id="join_table_td01" >이메일</th>
+					<td id="join_table_td02">${email1}@${email2}</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >닉네임</th>
+					<td id="join_table_td02">${memberVO.mem_nick}</td>
+				</tr>
+				<c:if test="${memberVO.mem_pic ne ''}">
+					<tr>
+						<th id="join_table_td01" >프로필 사진</th>
+						<td id="join_table_td02">
+							<img src="${memberVO.mem_pic}" style="width:150px; height:150px;" alt="이미지를 불러올 수 없습니다"/>
+						</td>
+					</tr>
+				</c:if>
+				<tr>
+					<td id="join_table_td07" height="60" colspan="2" align="center">
+						<input class="button_style_01" style="width:200px;" type="submit" value="정보 확인 및 가입하기"/>
+						<input class="button_style_02" style="width:90px;" type="button" value="정보 수정" onclick="javascript:history.back();"/>
+						<input class="button_style_02" style="width:90px;" type="button" value="가입 취소" onclick="javascript:location.href='./login';"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br/><br/><br/>
+	</div>
+<!-- 공통 우측메뉴 -->
+<%@ include file="/resources/jsp/right_menu.jsp" %>		
+		
+<!-- 공통 풋터 -->
+<%@ include file="/resources/jsp/footer.jsp" %>

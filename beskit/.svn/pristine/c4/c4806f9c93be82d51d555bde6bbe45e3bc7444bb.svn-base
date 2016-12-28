@@ -1,0 +1,101 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="http://s.pm.naver.net/css/main_v20161201.css" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" />
+<meta charset="UTF-8">
+<title>Welcome to Biscuit</title>
+</head>
+<body>
+<div id = "main">
+	<div id = "main_body">	
+		<div id="body_01">
+			<div id="body_text">Don't be anonymous here.<br/>Let yourself 'WELCOME TO KOREA'!</div>
+		</div>
+		<div id="body_02">
+			<table id="login">
+				<form method="POST">
+				<tr>
+					<td id="login_img" colspan="3">
+						<img src="<c:url value="/resources/img/main/sub_title.jpg"/>">
+					</td>
+				</tr>
+				<c:if test="${sessionScope.memberInfo==null}">
+				<tr style="height:25px;">
+					<td id="text_id">ID</td>
+					<td><input size="19" type="text" name="mem_id" required="required" tabindex="1"/></td>
+					<td rowspan="2" align="left" style="padding-top: 5px;">
+						<input type="submit" value="login" style="height:40px; width:40px" tabindex="3" />
+					</td>
+				</tr>
+				<tr style="height:25px;">
+					<td id="text_id">PW</td>
+					<td id="set_pw" valign="middle">
+						<input size="19" type="password" name="mem_pw" required="required" tabindex="2"/>
+					</td>
+				</tr>
+				<tr style="height:40px;">
+					<td colspan="3">
+						<a style="cursor:pointer" onclick="window.open('findid', '_blank', 'width=450,height=500,toolbars=no,scrollbars=no'); return false;" >아이디</a> / 
+						<a style="cursor:pointer" onclick="window.open('findpw', '_blank', 'width=450,height=500,toolbars=no,scrollbars=no'); return false;" >비밀번호 찾기</a>
+					</td>
+				</tr>
+				<tr style="height:25px;">
+					<td  colspan="3"></td>
+				</tr>
+				<tr>
+					<td colspan="3" id="membership">
+						<a href="join" ><img src="<c:url value="/resources/img/main/sub_01.jpg"/>"></a>
+					</td>
+				</tr>
+				</c:if>
+				<c:if test="${sessionScope.memberInfo !=null}">
+				<tr style="height:65px;">
+					<td colspan="3" align="center">
+						<table id="logout_table">
+							<tr>
+								<td align="center" width="250"><a id="nick_text" href="../profile/${sessionScope.memberInfo.mem_no}/">
+								<c:choose>
+									<c:when test="${memberInfo.mem_pic ne ''}">
+										<img src="<c:url value="/member/inputPic/${memberInfo.mem_pic}"/>"></a>
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value="/member/inputPic/${memberInfo.mem_pic}"/>"></a>
+									</c:otherwise>
+								</c:choose>
+								</td>
+								<td align="center" width="150" >
+									<a id="nick_text" href="../profile/${sessionScope.memberInfo.mem_no}/">${sessionScope.memberInfo.mem_nick}</a>님
+									<br/><br/>
+									<a id="my_logout" href="./logout">로그아웃</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr style="height:19px;">
+					<td colspan="3"></td>
+				</tr>
+				<tr>
+					<td colspan="3" id="membership">
+						<a href="../article/${sessionScope.memberInfo.mem_no}/" ><img src="<c:url value="/resources/img/main/sub_00.jpg"/>"></a>
+					</td>
+				</tr>
+				</c:if>
+				</form>
+				<tr>
+					<td colspan="3" id="membership">
+						<a href="" ><img src="<c:url value="/resources/img/main/sub_02.jpg"/>"></a>
+					</td>
+				<tr>
+					<td colspan="3" id="membership">
+						<a href="" ><img src="<c:url value="/resources/img/main/sub_03.jpg"/>"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<%@include file="/resources/jsp/footer.jsp" %>

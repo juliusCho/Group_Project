@@ -1,0 +1,102 @@
+package com.chain.sjl.member;
+
+import java.io.Serializable;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
+public class MemberVO implements Serializable {
+
+	private long mem_no;
+	private int mem_country;
+	private int mem_gender;
+	private String mem_id;
+	private String mem_pw;
+	private String mem_pwquestion;
+	private String mem_pwanswer;
+	private String mem_name;
+	private String mem_phone;
+	private String mem_email;
+	private String mem_nick;
+	private String mem_pic;
+	
+	public long getMem_no() {
+		return mem_no;
+	}
+	public void setMem_no(long mem_no) {
+		this.mem_no = mem_no;
+	}
+	public int getMem_country() {
+		return mem_country;
+	}
+	public void setMem_country(int mem_country) {
+		this.mem_country = mem_country;
+	}
+	public int getMem_gender() {
+		return mem_gender;
+	}
+	public void setMem_gender(int mem_gender) {
+		this.mem_gender = mem_gender;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+	public String getMem_pw() {
+		return mem_pw;
+	}
+	public void setMem_pw(String mem_pw) {
+		this.mem_pw = DigestUtils.sha512Hex(mem_pw);
+	}
+	public String getMem_pwquestion() {
+		return mem_pwquestion;
+	}
+	public void setMem_pwquestion(String mem_pwquestion) {
+		this.mem_pwquestion = mem_pwquestion;
+	}
+	public String getMem_pwanswer() {
+		return mem_pwanswer;
+	}
+	public void setMem_pwanswer(String mem_pwanswer) {
+		this.mem_pwanswer = mem_pwanswer;
+	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+	public String getMem_phone() {
+		return mem_phone;
+	}
+	public void setMem_phone(String mem_phone) {
+		this.mem_phone = mem_phone;
+	}
+	public String getMem_email() {
+		return mem_email;
+	}
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
+	}
+	public String getMem_nick() {
+		return mem_nick;
+	}
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
+	public String getMem_pic() {
+		return mem_pic;
+	}
+	public void setMem_pic(String mem_pic) {
+		this.mem_pic = mem_pic;
+	}
+	
+	@Override
+	public String toString() {
+		return "MemberVO [mem_no=" + mem_no + ", mem_country=" + mem_country + ", mem_gender=" + mem_gender
+				+ ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_pwquestion=" + mem_pwquestion + ", mem_pwanswer="
+				+ mem_pwanswer + ", mem_name=" + mem_name + ", mem_phone=" + mem_phone + ", mem_email=" + mem_email
+				+ ", mem_nick=" + mem_nick + ", mem_pic=" + mem_pic + "]";
+	}
+}

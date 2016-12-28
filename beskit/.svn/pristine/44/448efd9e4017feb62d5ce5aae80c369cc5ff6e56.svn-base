@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chain.sjl.profile.ProfileDAO">
+	
+	<select id="listArticle" parameterType="long" resultType="ArticleVO">
+		select a.art_no, a.art_content, a.mem_no, a.art_like, art_readcnt, art_com_cnt, a.art_pic, a.mem_nick,
+			   case to_char(a.art_regdate, 'YYYY-MM-DD') when to_char(sysdate, 'YYYY-MM-DD')
+		   	   	   	   								     then 'Today, ' || to_char(a.art_regdate, 'HH:MI:SS')
+		   	   	   	   								     else to_char(a.art_regdate, 'YYYY-MM-DD')
+		   		   	   	   								 end  as art_regdate
+		from   t_article a inner join t_member m
+		on     a.mem_no = m.mem_no
+		where  a.mem_no = #{mem_no}
+		order  by A.art_no desc
+	</select>
+	
+	<select id="checkArtLike" parameterType="ArticleVO" resultType="int">
+		select count(*)
+		from   t_art_like_list
+		where  mem_no=#{mem_no} and art_no=#{art_no}
+	</select>
+	
+	<insert id="insertArticle" parameterType="ArticleVO">
+		insert into t_article(art_no, art_content, mem_no, art_pic, mem_nick)
+		values(seq_article.nextval, #{art_content}, #{mem_no}, #{art_pic}, #{mem_nick})
+	</insert>
+	
+	<select id="getArticle" parameterType="long" resultType="ArticleVO">
+		select art_no, art_content, art_pic
+		from   t_article
+		where  art_no=#{art_no}
+	</select>
+	
+	<update id="updateArticle" parameterType="ArticleVO">
+		update t_article
+		set    art_pic=#{art_pic}, art_content=#{art_content}
+		where  art_no=#{art_no}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="long">
+		delete from t_article
+		where  art_no = #{art_no}
+	</delete>
+	
+	<update id="likeArticle" parameterType="long">
+		update t_article
+		set    art_like = art_like + 1
+		where  art_no = #{art_no}
+	</update>
+	
+	<update id="hateArticle" parameterType="long">
+		update t_article
+		set    art_like = art_like - 1
+		where  art_no = #{art_no}
+	</update>
+		
+	<insert id="insertArtLike" parameterType="ArticleVO">
+		insert into t_art_like_list(mem_no, art_no)
+		values(#{mem_no}, #{art_no})
+	</insert>
+	
+	<insert id="deleteArtLike" parameterType="ArticleVO">
+		delete from t_art_like_list
+		where  mem_no=#{mem_no} and art_no=#{art_no}
+	</insert>
+	
+	<update id="upComcnt" parameterType="long">
+		update t_article
+		set    art_com_cnt = art_com_cnt + 1
+		where  art_no = #{art_no}
+	</update>
+	
+	<update id="downComcnt" parameterType="long">
+		update t_article
+		set    art_com_cnt = art_com_cnt - 1
+		where  art_no = #{art_no}
+	</update>
+	
+	<select id="listComment" parameterType="long" resultType="CommentVO">
+		select A.mem_nick, A.com_content, A.com_like, A.com_regdate, A.mem_no, A.com_no
+		from  (select m.mem_nick, c.com_content, c.com_like, c.art_no, m.mem_no, c.com_no,
+				      case to_char(c.com_regdate, 'YYYY-MM-DD') when to_char(sysdate, 'YYYY-MM-DD')
+				      then '오늘 ' || to_char(c.com_regdate, 'HH:MI:SS') else to_char(c.com_regdate, 'YYYY-MM-DD')
+				      end as com_regdate
+			   from   t_member m inner join t_comment c
+			   on m.mem_no = c.mem_no) A
+		inner  join t_article B
+		on     B.art_no = A.art_no
+		where  B.art_no = #{art_no}
+		order  by A.com_no desc
+	</select>
+		
+	<select id="checkComLike" parameterType="CommentVO" resultType="int">
+		select count(*)
+		from   t_com_like_list
+		where  mem_no=#{mem_no} and art_no=#{art_no} and com_no=#{com_no}
+	</select>
+	
+	<insert id="insertComment" parameterType="CommentVO">
+		insert into t_comment(com_no, com_content, art_no, mem_no)
+		values(seq_comment.nextval, #{com_content}, #{art_no}, #{mem_no})
+	</insert>
+	
+	<update id="updateComment" parameterType="CommentVO">
+		update t_comment
+		set    com_content=#{com_content}
+		where  art_no=#{art_no} and com_no=#{com_no}
+	</update>
+	
+	<delete id="deleteComment" parameterType="CommentVO">
+		delete from t_comment
+		where  art_no=#{art_no} and com_no=#{com_no}
+	</delete>
+	
+	<update id="likeComment" parameterType="CommentVO">
+		update t_comment
+		set    com_like = com_like + 1
+		where  art_no=#{art_no} and com_no=#{com_no}
+	</update>
+	
+	<update id="hateComment" parameterType="CommentVO">
+		update t_comment
+		set    com_like = com_like - 1
+		where  art_no=#{art_no} and com_no=#{com_no}
+	</update>
+			
+	<insert id="insertComLike" parameterType="CommentVO">
+		insert into t_com_like_list(mem_no, art_no, com_no)
+		values(#{mem_no}, #{art_no}, #{com_no})
+	</insert>
+	
+	<insert id="deleteComLike" parameterType="CommentVO">
+		delete from t_com_like_list
+		where  mem_no=#{mem_no} and art_no=#{art_no} and com_no=#{com_no}
+	</insert>
+	
+
+
+	
+	<select id="confirm_pw_submit" parameterType="com.chain.sjl.member.MemberVO" resultType="com.chain.sjl.member.MemberVO"> 
+		select mem_id ,mem_name
+		from t_member
+		where mem_no=#{mem_no} and mem_pw=#{mem_pw}
+	</select>
+	
+	<select id="getFriendList" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select m.mem_no, m.mem_name, m.mem_nick, m.mem_id
+		from   t_friend f join t_member m
+		on     f.fri_no = m.mem_no
+		where  f.mem_no=#{mymem_no}
+	</select>
+	
+	<select id="getMemberInfo" parameterType="long" resultType="com.chain.sjl.member.MemberVO">
+		select mem_no, mem_country, mem_gender, mem_id, mem_name, mem_phone, mem_email,
+				mem_nick, mem_pic
+		from t_member
+		where mem_no=#{mem_no}
+	</select>
+	
+	<select id="getWaitingCount" parameterType="long" resultType="int">
+		select count(*) from t_waiting_friend
+		where mem_no=#{mem_no}
+	</select>
+	
+	<select id="checkWaitingFriend" parameterType="java.util.Map" resultType="int">
+		select count(*) from T_WAITING_FRIEND
+		where mem_no=#{mem_no} and waiting_fri_no=#{waiting_fri_no}
+	</select>
+</mapper>

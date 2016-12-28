@@ -1,0 +1,190 @@
+@CHARSET "UTF-8";
+
+/* --------------------- 채팅 리스트	-------------------- */
+#chat_list_body {
+	height:600px;
+	background-color: #fff;
+}
+
+#chatList_text {
+	border-bottom:3px solid #ff0084;
+	height:30px;
+	width: 520px;
+	font-size:18px;
+	font-weight:bold;
+	padding-top: 30px;
+}
+
+#chat_list_table {
+	margin:20px 0px 0px 0px;
+	border-collapse:collapse;
+}
+
+#chat_list_table tr td {
+	border-bottom: 1px dotted #ffd1e9;
+	border-collapse:collapse;
+}
+
+#chat_list_table tr td img {
+	width: 60px;
+	height: 60px;
+	border: 5px solid #fff;
+	border-radius: 50px;
+}
+
+#chat_list_icon {
+	width: 30px;
+}
+
+#chat_list_pic {
+	width: 80px;
+}
+
+#chat_list_nick {
+	width: 250px;
+}
+
+#chat_list_start {
+	width: 80px;
+}
+#chat_nick {
+	float:left;
+}
+#chat_newmsg {
+	float: left;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #fff;
+	border-collapse:collapse;
+	border-radius: 50px;
+	background-color: #ff0084;
+}
+
+#chat_regdate {
+	clear:left; 
+	font-size:8px;
+}
+
+#chat_start {
+	font-size:12px;
+	color:#ff0084;
+	margin:3px;
+	border-radius: 20px;
+}
+
+#chat_start:HOVER {
+	color:#fff; 
+}
+
+#chat_del {
+	font-size:12px;
+	color:#838383;
+	margin:3px;
+	border-radius: 20px;
+}
+
+#chat_del:HOVER {
+	color:#fff; 
+}
+
+/*	------------------ 채팅 방 CSS-------------------- */
+
+#chat_room_body {
+	margin:0 auto; 
+	background-color:#e2edf3;
+}
+
+/* ---------- msg 입력부분 ------------*/
+#insert_msg {
+	position:fixed; 
+	z-index:2;
+	width:100%; 
+	bottom:0px; 
+	margin:0px; 
+	background-color:#fff;
+}
+
+#insert_text {
+	font-size: 12px;
+}
+
+
+/*----------  msg 보이는 부분 ----------- */
+#display {
+	padding:60px 10px 60px 10px;	
+}
+
+#chat_title {
+	top:0px;
+	position:fixed;
+	font-weight:bold;
+	z-index:1;
+	border-bottom:1px solid #6daac7; 
+	padding:12px 0px 10px 20px; 
+	height:30px; 
+	width:100%; 
+	color:#fff;
+	background-color:#b3cedd;
+}
+
+#my_read_text {
+	position:relative;
+	float:right;
+	margin-left:10px;
+	right:0px;
+	bottom:-30px;
+	font-size:8px; 
+	color:#6b6b6b;
+}
+
+#your_read_text {
+	font-size:8px; 
+	color:#6b6b6b;
+}
+
+#your_content {
+	display: inline-block;
+	position: relative;
+	background: #fff;
+	font-size:12px;
+	width: 200px;
+	margin: 0 auto 10px;
+	padding:10px;
+	border-radius:8px;
+}
+
+#your_content:after {
+	content: '';
+	position: absolute;
+	border-top: 10px solid #fff;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	bottom:-9px;
+	left: 5px;
+}
+
+#my_content {
+	display: inline-block;
+	position: relative;
+	font-size:12px;
+	float:right;
+	background: #fff;
+	width: 200px;
+	margin: 0 auto 40px;
+	padding:10px;
+	border-radius:8px;
+}
+
+#my_content:after {
+	content: '';
+	position: absolute;
+	border-top: 10px solid #fff;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	bottom:-9px;
+	right: 5px;
+}
+

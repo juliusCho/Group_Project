@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+
+/*-----------------정보수정시 비밀번호 확인창 ---------------------*/
+#confirm_pw_tit {
+	margin: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #3383bb;
+	background-color: #fff;
+}
+
+#pw_confirm {
+	font-size: 12px;
+}
+/*-----------------------------------------------------------------*/

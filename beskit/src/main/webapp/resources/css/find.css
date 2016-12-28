@@ -1,0 +1,111 @@
+@CHARSET "UTF-8";
+
+#main {
+	 overflow-y:auto; 
+	 overflow-x:hidden;
+}
+
+#findid_table {
+	font-size: 15px;
+	width: 500px;
+	margin-top: 20px;
+}
+
+#findpw_table {
+	font-size: 15px;
+	width: 500px;
+}
+
+#id_list_tit {
+	text-decoration: none;
+	font-family: Arial;
+	background: #ffffff;
+	background: -o-linear-gradient(90deg, #ffffff, #f7f7f7);
+	background: -moz-linear-gradient(center top, #ffffff 5%, #f7f7f7 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff
+		), color-stop(1, #f7f7f7));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',
+		endColorstr='#f7f7f7');
+	background: -webkit-linear-gradient(#ffffff, #f7f7f7);
+	background: -ms-linear-gradient(#ffffff, #f7f7f7);
+	background: linear-gradient(#ffffff, #f7f7f7);
+	text-indent: 0px;
+	line-height: 8px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	font-size: 15px;
+	font-weight:bold;
+	color: #ff2e85;
+	width: 76px;
+	height: 18px;
+	padding: 15px 5px 5px 5px;
+	border-color: #d9d9d9;
+	border-width: 1px;
+	border-style: solid;
+}
+#id_list {
+	margin-top:10px;
+	margin-left:15px;
+	width:300px;
+	border-bottom:1px solid #d9d9d9;
+	border-bottom-style:dotted;
+}
+
+#find_title {
+	height:50px; 
+	font-size:32px; 
+	margin-top:15px;
+}
+
+.widget {
+	margin:30px 0px 0px 60px;
+}
+
+#findIdForm {
+	margin-top:15px; 
+}
+
+#display {
+	height:100px; 
+	width:335px;
+}
+
+#underLine {
+	position:fixed; 
+	bottom:60px; 
+	width:450px;
+}
+
+#find_other {
+	position:fixed;
+	margin-left:75px; 
+	width : 140px;
+	bottom:20px;"
+}
+
+#find_close {
+	position:fixed;
+	margin-left:220px;
+	width :140px; 
+	bottom:20px;"
+}
+
+#assume_pw {
+	color: #ff0000;
+	font-size:15px;
+	font-weight:bold;
+}
+
+
+
+
+
+
+
+
+
+

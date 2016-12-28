@@ -1,0 +1,29 @@
+package com.chain.sjl.chatlist;
+
+import java.util.List;
+import java.util.Map;
+
+import com.chain.sjl.member.MemberVO;
+
+public interface ChatListDAO {
+
+	List<ChatListVO> getChatList(long mem_no) throws Exception;
+
+	void insertChatList(ChatListVO chatListVO) throws Exception;
+
+	MemberVO getMemberInfo(long mem_no) throws Exception;
+
+	void insertChatList2(ChatListVO chatListVO) throws Exception;
+
+	int chatStatus(long cha_mate_no) throws Exception;
+
+	void deleteChatRoom(Map<String, Long> map) throws Exception;
+
+	ChatListVO checkChatList(long cha_list_no) throws Exception;
+
+	int getNewMsg(Map<String, Long> map) throws Exception;
+
+	void updateConfirm(Map<String, Long> map) throws Exception;
+
+
+}

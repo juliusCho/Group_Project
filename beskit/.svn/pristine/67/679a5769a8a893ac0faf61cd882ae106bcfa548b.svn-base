@@ -1,0 +1,102 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="vo" value="${memberInfo}"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="POST" action="update">
+<input type="hidden" name="mem_country" value="${vo.mem_country}"/>
+<input type="hidden" name="mem_gender" value="${vo.mem_gender}"/>
+<input type="hidden" name="mem_id" value="${vo.mem_id}"/>
+<input type="hidden" name="mem_pwquestion" value="${vo.mem_pwquestion}"/>
+<input type="hidden" name="mem_pwanswer" value="${vo.mem_pwanswer}"/>
+<input type="hidden" name="mem_name" value="${vo.mem_name}"/>
+<c:if test="${vo.mem_country eq 0}">
+	<input type="hidden" name="mem_phone" value="${vo.mem_phone}"/>
+</c:if>
+<input type="hidden" name="mem_email" value="${vo.mem_email}"/>
+<input type="hidden" name="mem_nick" value="${vo.mem_nick}"/>
+<c:if test="${vo.mem_pic ne ''}">
+	<input type="hidden" name="mem_pic" value="${vo.mem_pic}"/>
+</c:if>
+<table>
+	<caption>회원 정보</caption>
+<tr>
+	<td>회원국적 : </td>
+	<th>
+		<c:choose>
+			<c:when test="${vo.mem_country eq 0}">
+				한국인
+			</c:when>
+			<c:otherwise>
+				외국인
+			</c:otherwise>
+		</c:choose>
+	</th>
+</tr>
+<tr>
+	<td>성별 : </td>
+	<th>
+		<c:choose>
+			<c:when test="${vo.mem_gender eq 0}">
+				남
+			</c:when>
+			<c:otherwise>
+				여
+			</c:otherwise>
+		</c:choose>
+	</th>
+</tr>
+<tr>
+	<td>아이디 : </td>
+	<th>${vo.mem_id}</th>
+</tr>
+<tr>
+	<td>비밀번호 확인 질문 : </td>
+	<th>${vo.mem_pwquestion}</th>
+</tr>
+<tr>
+	<td>비밀번호 질문 답 : </td>
+	<th>${vo.mem_pwanswer}</th>
+</tr>
+<tr>
+	<td>이름 : </td>
+	<th>${vo.mem_name}</th>
+</tr>
+<c:if test="${vo.mem_country eq 0}">
+	<tr>
+		<td>전화번호 :</td>
+		<th> ${vo.mem_phone}</th>
+	</tr>
+</c:if>
+<tr>
+	<td>이메일 : </td>
+	<th>${vo.mem_email}</th>
+</tr>
+<tr>
+	<td>닉네임 : </td>
+	<th>${vo.mem_nick}</th>
+</tr>
+<c:if test="${vo.mem_pic ne ''}">
+	<tr>
+		<td>프로필 사진 : </td>
+		<th>
+			<img src="<c:url value="/member/${vo.mem_pic}"/>" style="width:100px; height:100px;" alt="이미지를 불러올 수 없습니다"/>
+		</th>
+	</tr>
+</c:if>
+<tr>
+	<td colspan="2" align="center">
+		<input type="submit" value="정보 수정" />
+		<input type="button" value="마이페이지" onclick="javascript:location.href='../../profile/' + ${vo.mem_no} + '/';"/>
+	</td>
+</tr>
+</table>
+</form>
+</body>
+</html>

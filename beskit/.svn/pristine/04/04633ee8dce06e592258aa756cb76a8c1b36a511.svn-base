@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<script>
+	$(function() {
+		$("#left_menu a").button();
+		$("a").click(function(event) {
+			event.preventDefault();
+		});
+	});
+</script>
+	<div id="sub_body">
+		<div id="main_left" align="center">
+			<div id="left_menu">
+				<h1>HOME</h1>
+				<a onclick="location.href='/sjl/profile/${sessionScope.memberInfo.mem_no}/'">마이페이지</a>
+				<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/'">친구목록</a>
+			</div>	
+		</div>

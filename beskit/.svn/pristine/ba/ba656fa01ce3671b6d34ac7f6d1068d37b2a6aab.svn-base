@@ -1,0 +1,63 @@
+package com.chain.sjl.chatlist;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.chain.sjl.member.MemberVO;
+
+@Service
+public class ChatListServiceImpl implements ChatListService {
+
+	@Autowired
+	private ChatListDAO chatListDAO;
+
+	@Override
+	public List<ChatListVO> getChatList(long mem_no) throws Exception {
+		return chatListDAO.getChatList(mem_no);
+	}
+
+	@Override
+	public void insertChatList(ChatListVO chatListVO) throws Exception {
+		chatListDAO.insertChatList(chatListVO);
+	}
+
+	@Override
+	public MemberVO getMemberInfo(long mem_no) throws Exception {
+		return chatListDAO.getMemberInfo(mem_no);
+	}
+
+	@Override
+	public void insertChatList2(ChatListVO chatListVO) throws Exception {
+		chatListDAO.insertChatList2(chatListVO);
+	}
+
+	@Override
+	public int chatStatus(long cha_mate_no) throws Exception {
+		return chatListDAO.chatStatus(cha_mate_no);
+	}
+
+	@Override
+	public void deleteChatRoom(Map<String, Long> map) throws Exception {
+		chatListDAO.deleteChatRoom(map);
+	}
+
+	@Override
+	public ChatListVO checkChatList(long cha_list_no) throws Exception {
+		return chatListDAO.checkChatList(cha_list_no);
+	}
+
+	@Override
+	public int getNewMsg(Map<String, Long> map) throws Exception {
+		return chatListDAO.getNewMsg(map);
+	}
+
+	@Override
+	public void updateConfirm(Map<String, Long> map) throws Exception {
+		chatListDAO.updateConfirm(map);
+	}
+
+
+}

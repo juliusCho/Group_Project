@@ -1,0 +1,132 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<script>
+	$(function() {
+		$("#left_menu a").button();
+		$("a").click(function(event) {
+			event.preventDefault();
+		});
+	});
+</script>
+	<div id="sub_body">
+		<div id="main_left" align="center">
+			<div id="left_menu">
+				<c:if test="${sessionScope.memberInfo.mem_no==mem_no}">
+				<h1>MY PAGE</h1>
+				
+				<!--			 내프로필				 -->
+				<div id="profile">
+					<table>
+						<tr>
+							<td colspan="2">
+								<c:choose>
+									<c:when test="${memberBasicInfo.mem_pic ne null}">
+										<img src="<c:url value="/member/${memberBasicInfo.mem_pic}" />"/>
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" />
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+						<tr>
+							<th align="center">별명</th>
+							<td id="profileInfo">${sessionScope.memberInfo.mem_nick}</td>
+						</tr>
+						<tr>
+							<th align="center">국적</th>
+							<td id="profileInfo">
+							<c:if test="${sessionScope.memberInfo.mem_country==0}">한국</c:if>
+							<c:if test="${sessionScope.memberInfo.mem_country==1}">Foreigner</c:if>
+							</td>
+						</tr>
+						<tr>
+							<th align="center">성별</th>
+							<td id="profileInfo">
+							<c:if test="${sessionScope.memberInfo.mem_gender==0}">남</c:if>
+							<c:if test="${sessionScope.memberInfo.mem_gender==1}">여</c:if>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" id="profileInfo">${sessionScope.memberInfo.mem_email}</td>
+						</tr>
+						<c:if test="${waitingfriend !=0}">
+						<tr>
+							<td colspan="2">
+								<span style="cursor: pointer; color: red;'" onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/'">
+									[NEW 친구요청] ${waitingfriend} 건
+								</span>
+							</td>
+						</tr>
+						</c:if>
+					</table>
+				</c:if>
+				<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">
+				<h1>MEMBER</h1>
+				<!--			타인 프로필				 -->
+				<div id="profile">
+					<table>
+						<tr>
+							<td colspan="2">
+								<c:choose>
+									<c:when test="${memberBasicInfo.mem_pic ne null}">
+										<img src="<c:url value="/member/${memberBasicInfo.mem_pic}" />"/>
+									</c:when>
+									<c:otherwise>
+										<img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" />
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+						<tr>
+							<th align="center">별명</th>
+							<td id="profileInfo">${memberBasicInfo.mem_nick}</td>
+						</tr>
+						<tr>
+							<th align="center">국적</th>
+							<td id="profileInfo">
+							<c:if test="${memberBasicInfo.mem_country==0}">한국</c:if>
+							<c:if test="${memberBasicInfo.mem_country==1}">Foreigner</c:if>
+							</td>
+						</tr>
+						<tr>
+							<th align="center">성별</th>
+							<td id="profileInfo">
+							<c:if test="${memberBasicInfo.mem_gender==0}">남</c:if>
+							<c:if test="${memberBasicInfo.mem_gender==1}">여</c:if>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">${memberBasicInfo.mem_email}</td>
+						</tr>
+					</c:if>
+					</table>
+				</div>
+				
+				<!--			 본인 프로필 일때 BUTTON			 -->
+				<c:if test="${sessionScope.memberInfo.mem_no==mem_no}">
+					<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/'">친구목록</a>
+					<!--<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/waitingFriends'">친구요청목록</a>-->
+					<a onclick="javascript:confirm_pw(${sessionScope.memberInfo.mem_no});">회원정보수정</a>
+				</c:if>
+				
+				<!--			타인 프로필 일때 BUTTON 			 -->
+				<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">
+					<c:if test="${result == 0}">
+						<c:if test="${checkwaitingfriend==0}">
+							<a onclick="insertFriend();">친구추가</a>
+						</c:if>
+						<c:if test="${checkwaitingfriend==1}">
+							<a onclick="acceptFriend(${memberBasicInfo.mem_no});">친구수락</a>
+							<a onclick="deleteWaitingFriendDirect(${memberBasicInfo.mem_no});">친구거절</a>
+						</c:if>
+					</c:if>
+					<c:if test="${result==1}">
+						<a onclick="deleteFriend();">친구삭제</a>
+					</c:if>
+				</c:if>
+				<c:if test="${sessionScope.memberInfo.mem_no!=mem_no}">
+					<a onclick="startChat();">채팅하기</a>
+				</c:if>
+			</div>
+		</div>

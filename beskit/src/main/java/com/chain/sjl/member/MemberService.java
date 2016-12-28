@@ -1,0 +1,37 @@
+package com.chain.sjl.member;
+
+import java.util.List;
+
+import com.chain.sjl.article.ArticleVO;
+
+public interface MemberService {
+
+	String idCheck(String id) throws Exception;
+
+	String nickCheck(String nick) throws Exception;
+
+	int joinFinal(MemberVO memberVO) throws Exception;
+	
+	MemberVO login(MemberVO memberVO) throws Exception;
+
+	List<MemberVO> find_id(MemberVO memberVO) throws Exception;
+
+	MemberVO find_pw(MemberVO memberVO) throws Exception;
+
+	MemberVO cofirm_pwquestion(MemberVO memberVO) throws Exception;
+
+	void findAndChange_pw(MemberVO memberVO) throws Exception;
+
+	List<MemberVO> find_id2(String mem_email) throws Exception;
+
+	MemberVO confirm_pw_submit(MemberVO memberVO) throws Exception;
+
+	int updateFinal(MemberVO memberVO) throws Exception;
+
+	int newMessage(long mem_no) throws Exception;
+
+	void leaveAccount(long mem_no) throws Exception;
+
+	MemberVO getMemberInfo(String mem_id) throws Exception;
+
+}

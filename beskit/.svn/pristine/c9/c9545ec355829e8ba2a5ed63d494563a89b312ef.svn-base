@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.country}"/>
+<script>
+	$(function() {
+		$("#left_menu a").button();
+		$("a").click(function(event) {
+			event.preventDefault();
+		});
+	});
+</script>
+	<div id="sub_body">
+		<div id="main_left" align="center">
+		<fmt:bundle basename="${sessionScope.basename}">
+			<div id="left_menu">
+				<h1>HOME</h1>
+				<a onclick="location.href='/sjl/profile/${sessionScope.memberInfo.mem_no}/'"><fmt:message key="home.mypage"/></a>
+				<a onclick="location.href='/sjl/friend/${sessionScope.memberInfo.mem_no}/'"><fmt:message key="home.friendlist"/></a>
+			</div>	
+		</fmt:bundle>
+		</div>

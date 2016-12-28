@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chain.sjl.member.MemberDAO">
+	
+	<select id="checkBusiness" parameterType="String" resultType="String">
+		select mem_business
+		from   t_member
+		where  mem_business = #{business}
+	</select>
+	
+	<select id="idCheck" parameterType="String" resultType="String">
+		select mem_id
+		from   t_member
+		where  mem_id = #{id}
+	</select>
+	
+	<select id="nickCheck" parameterType="String" resultType="String">
+		select mem_nick
+		from   t_member
+		where  mem_nick = #{nick}
+	</select>
+	
+	<insert id="joinFinal" parameterType="MemberVO">
+		insert into t_member(mem_no, mem_country, mem_gender, mem_id, mem_pw, mem_pwquestion, mem_pwanswer,
+							 mem_name, mem_phone, mem_email, mem_nick, mem_pic)
+		values(seq_member.nextval, #{mem_country}, #{mem_gender}, #{mem_id}, #{mem_pw}, #{mem_pwquestion},
+			   #{mem_pwanswer}, #{mem_name}, #{mem_phone}, #{mem_email}, #{mem_nick}, #{mem_pic})
+	</insert>
+	
+	<select id="login" parameterType="MemberVO" resultType="MemberVO">
+		select mem_no, mem_country, mem_gender, mem_id, mem_pwquestion, mem_pwanswer, mem_name, mem_phone, mem_email, mem_nick, mem_pic	
+		from t_member
+		where mem_id=#{mem_id} and mem_pw=#{mem_pw}
+	</select>
+	
+	<select id="find_id" parameterType="String" resultType="MemberVO">
+		select mem_id
+		from t_member
+		where mem_phone = #{mem_phone} and mem_name=#{mem_name}
+	</select>
+	
+	<select id="find_pw" parameterType="MemberVO" resultType="MemberVO">
+		select mem_pwquestion
+		from t_member
+		where mem_id=#{mem_id} and mem_name=#{mem_name}
+	</select>
+	
+	<select id="cofirm_pwquestion" parameterType="MemberVO" resultType="MemberVO">
+		select mem_id
+		from t_member
+		where mem_id=#{mem_id} and mem_name=#{mem_name} and mem_pwanswer=#{mem_pwanswer}
+	</select>
+	
+	<update id="findAndChange_pw" parameterType="MemberVO">
+		update T_MEMBER
+		set mem_pw=#{mem_pw}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<select id="find_id2" parameterType="String" resultType="MemberVO">
+		select mem_id
+		from t_member
+		where mem_email=#{mem_email}
+	</select>
+	
+	<select id="confirm_pw_submit" parameterType="MemberVO" resultType="MemberVO"> 
+		select mem_id ,mem_name
+		from t_member
+		where mem_no=#{mem_no} and mem_pw=#{mem_pw}
+	</select>
+	
+	<update id="updateFinal" parameterType="MemberVO">
+		update t_member
+		set    mem_pw=#{mem_pw}, mem_pwquestion=#{mem_pwquestion}, mem_name=#{mem_name},
+		       mem_phone=#{mem_phone}, mem_email=#{mem_email}, mem_nick=#{mem_nick}, mem_pic=#{mem_pic}
+		where  mem_no=#{mem_no} and mem_id=#{mem_id}
+	</update>
+	
+	<select id="newMessage" parameterType="long" resultType="int">
+		select count(*) from t_chat
+		where mem_no!=#{mem_no} and cha_confirm=0 and cha_list_no=mem_no+#{mem_no}
+	</select>
+	
+	<delete id="leaveAccount" parameterType="long">
+		delete from t_member
+		where mem_no=#{mem_no}
+	</delete>
+		
+</mapper>

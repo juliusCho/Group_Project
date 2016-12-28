@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+
+/*------------------- 친구 목록 ----------------------*/
+#friend_list {
+	height: 600px;
+	background-color: #fff;
+}
+
+#wait_fri {
+	border-bottom:2px solid #ff0084;
+	height:30px;
+	width: 520px;
+	font-size:18px;
+	font-weight:bold;
+	padding-top: 30px;
+}
+
+#my_fri {
+	border-bottom:2px solid #008cff;
+	height:30px;
+	width: 520px;
+	font-size:18px;
+	font-weight:bold;
+	padding-top: 30px;
+}
+
+#fri_list_table {
+	margin:20px 0px 0px 0px;
+	border-collapse:collapse;
+}
+
+#fri_list_table tr td {
+	border-bottom: 1px dotted #ffd1e9;
+	border-collapse:collapse;
+}
+
+#fri_list_table tr td img {
+	width: 60px;
+	height: 60px;
+	border: 5px solid #fff;
+	border-radius: 50px;
+}
+
+#fri_list_icon {
+	width: 30px;
+}
+
+#fri_list_pic {
+	width: 80px;
+}
+
+#fri_list_nick {
+	width: 250px;
+}
+
+#fri_list_start {
+	width: 80px;
+}
+
+#fri_select {
+	width: 120px;
+	font-size: 12px;
+}
+
+
+
+/*----------------- 친구 찾기 창 ---------------------*/
+#display {
+	width:225px;
+	margin:0px 0px 0px 87px;
+	font-size: 15px;
+	font-weight: bold;
+	
+}
+#find_user {
+	margin-top:10px;
+	background-color:#f2f2f2;
+}
+
+#findFriend {
+	font-size: 12px;
+}
+
+/*-----------------정보수정시 비밀번호 확인창 ---------------------*/
+#confirm_pw_tit {
+	margin: 20px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #3383bb;
+	background-color: #fff;
+}
+
+#pw_confirm {
+	font-size:13px; 
+}
+
+/*----------------- 회원 탈퇴 창 ---------------------*/
+#leave_body {
+	font-size:13px; 
+	width:500px; 
+	height:400px;"
+}
+
+#leave_tit {
+	width:500px;
+}
+
+#leave_notice {
+	width:500px;
+}

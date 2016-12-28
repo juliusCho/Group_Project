@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.country}"/>
+<fmt:bundle basename="${sessionScope.basename}">
+<!DOCTYPE html>
+<html>
+<head>
+<title>BeSkit</title>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/sub_other.css" />" />
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.1.1.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/jquery_ui/flick/jquery-ui.css" />" />
+<script type="text/javascript" src="<c:url value="/resources/jquery_ui/jquery-ui.js" />"></script>
+<script type="text/javascript">
+function goUrl(mem_no){
+	opener.location.href='../../profile/'+mem_no+'/';
+	self.close();
+}
+
+$(function(){
+	$('#findFriend').click(function(){ 
+		$.ajax({
+			method:'POST',
+			url:'./findFriend',
+			data:{mem_id:$('#mem_id').val()}
+		}).done(function(data){
+			if(data!==''){
+				var item='<div id="find_user"><a style="cursor:pointer;" onclick="goUrl('+data.mem_no+');">' + data.mem_id + '(' + data.mem_name + ')</a></div>';
+				$('#display').html(item);
+			}else{
+				$('#display').html('<div id="find_user"><fmt:message key="friend.noSearchMsg"/></div>');			
+			}
+		});	
+	});
+});
+</script>
+</head>
+<body style="margin:0 auto;">
+	<div id="confirm_pw_tit" align="center"><fmt:message key="friend.idAskMsg"/></div>
+	<div align="center">
+		<input style="height:20px; " type="text" id="mem_id" name="mem_id" required="required"/>
+		<input class="ui-button ui-widget ui-corner-all" type="button" id="findFriend" value="<fmt:message key="friend.search"/>"/>
+	</div>
+	<div id="display"></div>
+</body>
+</fmt:bundle>
+</html>

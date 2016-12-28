@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="../../resources/js/jquery-3.1.1.js" ></script>
+<script type="text/javascript">
+function confirm_pw(mem_no){
+ 	$.ajax({
+		method:'POST',
+		url:'./confirm_member_pw',
+		data:{mem_pw:$('#mem_pw').val(), mem_no:mem_no}
+	}).done(function (data){
+		if(data!==''){
+			alert('본인 인증 성공!');
+			window.opener.document.confirm_pw_form.submit();
+			
+			self.close();
+		}else{
+			alert('비밀번호를 확인해주세요!');
+		}
+	}); 
+}
+
+</script>
+</head>
+<body>
+본인확인을 위한 비밀번호를 입력해주세요.<br/><br/>
+비밀번호 : <input type="password" required="required" name="mem_pw" id="mem_pw"/>
+<input type="button" value="확인" onclick="confirm_pw(${mem_no});"/>
+
+</body>
+</html>

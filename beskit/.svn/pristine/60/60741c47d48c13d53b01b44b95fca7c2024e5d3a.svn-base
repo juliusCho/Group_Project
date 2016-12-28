@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"
+	p:jndiName="java:comp/env/jdbc/chaindbcp"/>
+	
+	
+	
+	
+	<bean id="sqlMember" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.member"/>
+	
+	<bean id="sqlProfile" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.profile"/>
+	
+	<bean id="sqlFriend" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.friend"/>
+	
+	<bean id="sqlArticle" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.article"/>
+	
+	<bean id="sqlSqaure" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.square"/>
+	
+	<bean id="sqlChat" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.chat"/>
+	
+	<bean id="sqlChatList" class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="dataSource"
+	p:typeAliasesPackage="com.chain.sjl.chatlist"/>
+	
+	
+	
+	
+	<bean id="memberDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.member.MemberDAO"
+	p:sqlSessionFactory-ref="sqlMember"/>
+	
+	<bean id="profileDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.profile.ProfileDAO"
+	p:sqlSessionFactory-ref="sqlProfile"/>
+	
+	<bean id="friendDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.friend.FriendDAO"
+	p:sqlSessionFactory-ref="sqlFriend"/>
+	
+	<bean id="articleDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.article.ArticleDAO"
+	p:sqlSessionFactory-ref="sqlArticle"/>
+	
+	<bean id="squareDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.square.SquareDAO"
+	p:sqlSessionFactory-ref="sqlSqaure"/>
+	
+	<bean id="chatDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.chat.ChatDAO"
+	p:sqlSessionFactory-ref="sqlChat"/>
+	
+	<bean id="chatListDAO" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.chain.sjl.chatlist.ChatListDAO"
+	p:sqlSessionFactory-ref="sqlChatList"/>
+	
+	
+	
+	
+	
+	
+	<bean id="multipartResolver" scope="prototype" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"/>
+		<property name="maxUploadSize" value="50000000"/>
+		<!-- 1kbyte = 1024 (2^10) -->
+	</bean>
+</beans>

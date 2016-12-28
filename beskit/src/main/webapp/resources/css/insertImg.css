@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+#file_up {
+	width: 450px;
+}
+#insertPic {
+	margin:0;
+	width: 312px;
+}
+
+
+
+#warningMsg {
+	color: green;
+	font-size: 90%;
+}
+
+#warningMsg2 {
+	color: red;
+	font-size: 70%;
+}

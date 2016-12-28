@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.chain.sjl.member.MemberVO" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="../../../resources/js/jquery-3.1.1.js" ></script>
+<script type="text/javascript">
+function deleteFriend(){
+	var value= confirm('정말로 삭제하시겠습니까?');
+	if(value){
+		$.ajax({
+			method:'GET',
+			url:'./deleteFriend',
+			data:{fri_no:'${memberVO.mem_no}'}
+		}).done(function(data){
+			if(data==2){
+				alert('삭제 되었습니다.');
+				opener.location.href="./";
+				self.close();
+			}else{
+				alert('에러 입니다.');
+			}
+		});	
+	}else{
+		return;
+	}
+	
+}
+
+function insertFriend(){
+	var myNo=${sessionScope.memberInfo.mem_no};
+	var friendNo=${memberVO.mem_no};
+	
+	if(myNo==friendNo){
+		alert('자기 자신은 추가할 수 없습니다.');
+		return;
+	}else{
+		$.ajax({
+			method:'GET',
+			url:'./insertWaitingFriend',
+			data:{waiting_fri_no:$('#waiting_fri_no').val()}
+		}).done(function(data){
+			if(data.msg=='성공'){
+				alert('등록 되었습니다.');
+				self.close();
+			}else{
+				alert(data.msg);
+			}
+		});		
+	}
+	
+}
+</script>
+</head>
+<body>
+<input type="hidden" name="waiting_fri_no" id="waiting_fri_no" value="${memberVO.mem_no}"/>
+<table border="1">
+	<tr>
+		<th width="200" height="250">~~사진~~${memberVO.mem_pic}</th>
+	</tr>
+	<tr>
+		<td>${memberVO.mem_name}(${memberVO.mem_nick })</td>
+	</tr>
+	<tr>
+		<td>${memberVO.mem_email}</td>
+	</tr>
+</table>
+<input type="button" value="ADD" onclick="insertFriend();"/>
+<input type="button" value="REMOVE" onclick="deleteFriend()"/>
+</body>
+</html>

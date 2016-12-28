@@ -1,0 +1,71 @@
+로그인     = sjl/member/login
+로그아웃   = sjl/member/logout
+ID   찾기  = sjl/member/findid
+PW   찾기  = sjl/member/findpw
+회원가입   = sjl/member/join
+프사삽입   = sjl/member/insertPic
+이미지로딩 = sjl/member/inputPic/{mem_pic}
+
+**{mem_pic} = "./inputPic/thumb_" + fileVO.getUpFile().getOriginalFileName()
+  - 최대크기 : [100 x 100 픽셀]
+
+
+
+회원정보        = sjl/user/{mem_no}/mypage
+개인정보변결할때, 
+비번체크        = sjl/user/{mem_no}/confrim_pw
+닉 변경         = sjl/user/{mem_no}/changenick
+비번변경        = sjl/user/{mem_no}/changepw
+
+
+
+
+
+친구목록   = sjl/friend/{mem_no}/
+친구추가   = sjl/friend/{mem_no}/insert
+친구삭제   = sjl/friend/{mem_no}/delete
+
+
+
+홈         = sjl/article/{mem_no}/
+글작성     = sjl/article/{mem_no}/insert
+글수정     = sjl/article/{mem_no}/update
+글삭제     = sjl/article/{mem_no}/delete
+댓글목록   = sjl/article/{mem_no}/{art_no}
+댓글달기   = sjl/article/{mem_no}/{art_no}/insert
+댓글수정   = sjl/article/{mem_no}/{art_no}/update
+댓글삭제   = sjl/article/{mem_no}/{art_no}/delete
+
+이미지삽입 = sjl/article/insertImg
+**{art_pic} = "./inputPic/img_" + fileVO.getUpFile().getOriginalFileName()
+  - 최대크기 : [400 x 600 픽셀]
+
+
+
+만남의광장  = sjl/square/{mem_no}/
+댓글목록    = sjl/square/{mem_no}/{art_no}
+댓글달기    = sjl/square/{mem_no}/{art_no}/insert
+댓글수정    = sjl/square/{mem_no}/{art_no}/update
+댓글삭제    = sjl/square/{mem_no}/{art_no}/delete
+
+
+
+마이페이지 = sjl/profile/{mem_no}/
+글작성     = sjl/profile/{mem_no}/insert
+글수정     = sjl/profile/{mem_no}/update
+글삭제     = sjl/profile/{mem_no}/delete
+댓글목록   = sjl/profile/{mem_no}/{art_no}
+댓글달기   = sjl/profile/{mem_no}/{art_no}/insert
+댓글수정   = sjl/profile/{mem_no}/{art_no}/update
+댓글삭제   = sjl/profile/{mem_no}/{art_no}/delete
+
+
+
+채팅방목록 = sjl/chatlist/{mem_no}
+채팅방추가 = sjl/chatlist/{mem_no}/insert
+채팅방삭제 = sjl/chatlist/{mem_no}/delete
+
+
+
+채팅목록   = sjl/chat/{mem_no}/{cha_list_no}
+채팅입력   = sjl/chat/{mem_no}/{cha_list_no}/insert

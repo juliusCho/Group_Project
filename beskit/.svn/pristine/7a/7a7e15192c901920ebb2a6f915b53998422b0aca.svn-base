@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BeSkit</title>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.1.1.js" />"></script>
+<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/sub_main.css" />" />
+<link rel="stylesheet" href="<c:url value="/resources/jquery_ui/flick/jquery-ui.css" />" />
+<script type="text/javascript" src="<c:url value="/resources/jquery_ui/jquery-ui.js" />"></script>
+<%@ include file="/resources/jsp/script/add_friend.jsp" %>
+<script type="text/javascript">
+
+//왼쪽메뉴 제어
+function confirm_pw(mem_no){
+	window.open('../../user/' + mem_no + '/confirm_pw','','toolbar=no,location=no,status=no,menubar=no,scrollbar=yes,' +
+	'resizable=no,width=400,height=400')
+}
+
+
+function deleteWaitingFriendDirect(waiting_fri_no){
+	var value = confirm('친구수락을 거절하시겠습니까?');
+	if(value){
+		$.ajax({
+			method:'GET',
+			url:'deleteWaitingFriend',
+			data:{waiting_fri_no:waiting_fri_no}
+		}).done(function(data){
+			alert('친구수락 거절 완료.');
+			location.href="../../profile/"+${sessionScope.memberInfo.mem_no}+"/";
+		});
+	}else{
+		return;
+	}	
+}
+
+function deleteWaitingFriend(waiting_fri_no){
+	$.ajax({
+		method:'GET',
+		url:'deleteWaitingFriend',
+		data:{waiting_fri_no:waiting_fri_no}
+	}).done(function(data){
+	});
+}
+
+function acceptFriend(waiting_fri_no){
+ 	$.ajax({
+		method:'GET',
+		url:'acceptFriend',
+		data:{waiting_fri_no:waiting_fri_no}
+	}).done(function(data){
+		if(data==2){
+			alert('성공');
+			deleteWaitingFriend(waiting_fri_no);
+			location.href="../../profile/"+${sessionScope.memberInfo.mem_no}+"/";
+		}else{
+			alert('실패');
+		}
+	}); 
+}
+</script>
+</head>

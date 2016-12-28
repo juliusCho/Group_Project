@@ -1,0 +1,98 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script src="<c:url value="/resources/js/jquery-3.1.1.js"/>"></script>
+<style>
+	#warningMsg {color:green; font-size:90%;}
+	#warningMsg2 {color:red; font-size:70%;}
+</style>
+<script>
+	var displaying = '';
+	var windowOff = false;
+	var changedImg = '';
+
+	window.onload = function() {
+		uploadDisplay();
+	}
+	
+	function uploadDisplay() {
+		displaying += '<input type="file" name="art_pic" id="art_pic" size=40 accept="image/*"/>';
+		displaying += '<input type="button" value="업로드" id="btnInsert"/>';
+	}
+    
+	$(function() {
+		$('#uploadImg').html(displaying);
+		$('#btnInsert').click(function() {		
+			
+			var file = $('#art_pic')[0].files[0];
+            var formData = new FormData();
+            formData.append('upFile', file);
+			
+		    $.ajax({
+		    	method:'POST',
+		    	url:'./insertImg',
+                processData: false,
+                contentType: false,
+                data:formData
+		    }).done(function(display) {
+		    	var show = '';
+		    	if(display.imageName == 'fail') {
+		    		show += '파일이 존재하지 않습니다';
+			    	show += '<br/><input type="file" name="art_pic" id="art_pic" size=40 accept="image/*"/>';
+			    	show += '<input type="button" value="업로드" id="btnInsert"/>';
+		    	} else if(display.imageName == 'exceeded') {
+		    		show += '파일이 최대 크기(약 10MB)를 초과하였습니다';
+			    	show += '<br/><input type="file" name="art_pic" id="art_pic" size=40 accept="image/*"/>';
+			    	show += '<input type="button" value="업로드" id="btnInsert"/>';
+		    	} else if(display.imageName == 'notImg') {
+		    		show += '지원되는 이미지 파일이 아닙니다';
+			    	show += '<br/><input type="file" name="art_pic" id="art_pic" size=40 accept="image/*"/>';
+			    	show += '<input type="button" value="업로드" id="btnInsert"/>';
+		    	} else {
+		    		show += '<input type="button" value="확인" onclick="javascript:clickOk();"/>';
+		    		show += '<br/><img src="' + display.url + '" alt="이미지를 불러올 수 없습니다."/>';
+		    		changedImg = display.url;
+		    	}
+	    		$('#uploadImg').html(show);
+		    });
+		});
+	});
+	
+	function clickOk() {
+		$(function() {
+			$('#pic_input', opener.document).html('<img src="' + changedImg + '"/>' +
+										'<input type="hidden" id="art_pic" value="' + changedImg + '"/>');
+			self.close();
+		});
+	}
+</script>
+</head>
+<body>
+<form method="post" enctype="text" enctype="multipart/form-data">
+<table align="center">
+	<caption><h3>사진 업로드</h3></caption>
+<tr align="center">
+	<td id="warningMsg">
+		** jpg, bmp, gif, png 포멧의<br/>이미지 파일만 지원합니다 **
+	</td>
+</tr>
+<tr align="center">
+	<td id="warningMsg2">
+		** 이미지는 가로 400 픽셀로 자동 조정됩니다<br/>
+		** 세로 최대 길이는 1000 픽셀로 조정됩니다
+	</td>
+</tr>
+<tr><td><br/></td></tr>
+<tr align="center">
+	<td>
+		<div id="uploadImg"></div>
+	</td>
+</tr>
+</table>
+</form>
+</body>
+</html>

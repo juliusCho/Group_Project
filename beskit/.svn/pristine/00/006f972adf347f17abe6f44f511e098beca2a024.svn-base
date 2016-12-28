@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<div id="main_footer" align="center">
+		<table>
+			<tr>
+				<td align="center"><a href="">회원가입</a></td>
+				<td align="center"><a href="">로그인</a></td>
+				<td align="center"><a href="">모바일</a></td>
+				<td align="center"><a href="">친구찾기</a></td>
+				<td align="center"><a href="">개인정보보호</a></td>
+				<td align="center"><a href="">약관</a></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="6" id="corporate">© 2016 BeSkit</td>
+			</tr>	
+		</table>
+	</div>
+</div>
+</body>
+</html>

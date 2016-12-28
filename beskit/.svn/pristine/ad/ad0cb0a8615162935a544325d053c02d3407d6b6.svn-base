@@ -1,0 +1,214 @@
+### \ud5e4\ub354
+header.home=Home
+header.mypage=MyPage
+header.square=MeetUp Square
+header.findfriend=Search Friend
+header.chatting=Chat
+
+### \ud48b\ud130
+footer.join=Register
+footer.login=Login
+footer.mobile=Mobile
+footer.findfriend=Search Friend
+footer.protectprivacy=Privacy Protection
+footer.form=Terms &amp; Policy
+
+### \ub85c\uadf8\uc778
+login.idfind=ID
+login.pwfind=PW FIND
+login.tobepolite= 
+login.logout=Logout
+
+### \ud68c\uc6d0\uac00\uc785
+join.title=REGISTRATION
+join.classify=Classification
+join.korean=Korean
+join.foreigner=Foreigner
+join.male=Male
+join.female=Female
+join.id=ID
+join.idconfirm=ID Check
+join.idMsg=Please make sure your ID be wihtin 6~20 letters.
+join.pw=Password
+join.pwMsg=Please make sure your PW be wihtin 10~20 letters.
+join.confirm=PW Again
+join.confirmQ=PW Question
+join.chooseQ=Choose Question
+join.choose1=What&#39;s my motto?
+join.choose2=What was my childhood nickname?
+join.choose3=What was my best middle-school buddy&#39;s name?
+join.choose4=When is my parents&#39; wedding anniversary?
+join.choose5=When is my first lover&#39;s birthday?
+join.choose6=Type your own
+join.qAns=PW Answer
+join.name=Name
+join.email=Email
+join.emailChoose=Choose Email
+join.emailChoose7=Type your own
+join.nick=Nickname
+join.profilePic=Profile Picture
+join.noImg=Cannot load your image
+join.uploadImg=Upload Photo
+join.imgDelete=Delete Photo
+join.join=Register
+join.rewrite=Rewrite
+join.cancel=Cancel
+join.noKorean=You can only use English
+join.phone=Phone
+join.choose=Choose
+join.wrongPhone=Incorrect format of phone
+join.joinedId=This ID has already been taken
+join.joinOkId=You may use this ID
+join.idLengthMsg=Please make sure your ID be within 6~20 letters
+join.pwMatched=Both PWs are matched
+join.pwNoMatch=PWs are not matched
+join.pwLengthMsg=Please make sure your PW be within 10~20 letters
+join.nickLengthMsg=Please make sure your Nickname be within 10 letters
+join.joinedNick=This nickname is already in use
+join.nickOkUse=You may use this nickname
+join.joinConfirm=FINAL CHECK
+join.pwConfirmQ=Question for PW Find
+join.pwConfirmA=Answer for PW Question
+join.checkInfoAndJoin=CHECKED and REGISTER
+join.changeInfo=Change Info
+join.cancelJoin=Cancel Register
+join.gender=Gender
+
+### \uc5d0\ub7ec \ud398\uc774\uc9c0
+exception.msg1=Undefined error has been detected.
+exception.msg2=sec after, the previous page will be shown.
+exception.msg3=Move to previouse page
+nopage.msg=No page has been found.
+session.msg1=Session has been invalidated.
+session.msg2=sec after, LOGIN page will be shown.
+session.msg3=Move to LOGIN page
+
+### \ud648
+home.mypage=MyPage
+home.friendlist=Friend List
+home.artLength=Input length should be upto 600 letters
+home.noArtMsg1=No article to show.
+home.noArtMsg2=Post your life to express yourself!
+home.artTitle=&#39;s post
+home.regdateMsg= 
+home.update=Modify
+home.delete=Delete
+home.comment=Comment
+home.quantity= 
+home.seemore=See More
+home.addcontentMsg=Please write content
+home.reallydelete=Would you like to delete this article?
+home.firstCommentMsg=Comment here for the first time!
+home.addComment=Write Comment
+home.commentLength=Input length should be upto 150 letters
+home.delComMsg=Would you like to delete this comment?
+home.artMsg=Post something to share with your friends!
+home.addPic=ADD PHOTO
+home.post=POST
+home.delPicMsg=Would you like to delete the photo?
+home.updateArtMsg=Would you like to modify?
+home.updateTitle=Modify
+home.changePic=Change Pic
+home.deletePic=Delete Pic
+home.updateUpdate=Update
+home.deleteContent=Delete Content
+home.updateCancel=Cancel
+
+### \ucc44\ud305
+chat.read=Read
+chat.noread=Not Read
+chat.title= on Chat
+chat.transmit=Send
+
+### \uce5c\uad6c
+friend.nick=Nickname
+friend.country=Class
+friend.gender=Gender
+friend.korea=Korean
+friend.male=Male
+friend.female=Female
+friend.friendlist=Friend List
+friend.changemem=Member Info
+friend.addfriend=Add Friend
+friend.delfriend=Delete Friend
+friend.chatfriend=Start Chat
+friend.delreally=Are you sure to delete?
+friend.delsuccess=Delete succeeded.
+friend.error=Error.
+friend.success=Success
+friend.addsuccess=Friend Added.
+friend.waiting=Waiting for the other&#39;s accept..
+friend.rejectMsg=Sure to reject this friend request?
+friend.rejectComplete=Request rejected.
+friend.fail=Failed
+friend.noSearchMsg=No result has been found.
+friend.idAskMsg=Enter ID of a friend to find &#58;D
+friend.search=Search
+friend.reallydelete=Are you sure to delete?
+friend.deletedone=Delete Succeeded.
+friend.errorMsg=Error.
+friend.noSelfAdd=You cannot add yourself.
+friend.inputSuccess=Friend Added.
+friend.rejectReally=Would you like to reject the request?
+friend.rejectDone=Rejection has been done.
+friend.requestlist=Friend Request List
+
+### \ud68c\uc6d0\ud398\uc774\uc9c0
+mypage.requestfriend=Ask to be Friend
+mypage.requesttime= times
+mypage.acceptfriend=Accept Request
+mypage.rejectfriend=Decline Request
+mypage.noArtMsg=Post something for your friend!
+
+### \ub9cc\ub0a8\uc758 \uad11\uc7a5
+square.title=MeetUp Square
+square.mypage=MyPage
+square.friendlist=Friend List
+square.noArtMsg=No new Korean friend to find yet &#58;(
+
+### \uc5c5\ub85c\ub4dc \ucc3d
+upload.upload=Upload
+upload.nofileMsg=No file&#39;s been found
+upload.exceededMsg1=The file&#39;s exceeded the maximum size(approx. 
+upload.exceededMsg2=)
+upload.notImgMsg=The file is not compatible for this website
+upload.confirm=OK
+upload.noImgMsg=Cannot load the image.
+upload.title=UPLOAD PICTURE
+upload.fileformat=File Format
+upload.compatMsg1=formats
+upload.compatMsg2=are only allowed
+upload.fileSize=File Size
+upload.artMsg1=Image will automatically be adjusted to 400px of width
+upload.artMsg2=The maximum length of heigth is 1000px
+upload.memMsg2=Image will automatically be adjusted to 400px of width
+upload.memMsg=Image will automatically be adjusted to 150px X 150px
+upload.delPicMsg=Would you like to delete the photo?
+upload.modArtMsg=Would you like to change?
+upload.modTitle=Article Modification
+upload.picChange=Pic Change
+upload.picDelete=Pic Delete
+upload.modify=Modify
+upload.delContent=Delete Content
+upload.cancel=Cancel
+
+### \uc544\uc774\ub514/\ube44\ubc88 \ucc3e\uae30
+find.name=NAME
+find.phone=PHONE
+find.search=Search
+find.emailchoose=Choose Email
+find.emailchoose7=Type your own
+find.idlist=ID List
+find.noIdMsg=No ID&#39;s been found.
+find.findid=Find My ID
+find.findphone=Find by Phone
+find.findemail=Find by Email
+find.findpw=Find My PASSWORD
+find.close=CLOSE
+find.verifydoneMsg=Verification Completed! Temporal PW has been sent to your email.
+find.error=ERROR
+find.verifynoMsg=Please make sure to insert the correct answer for your question.
+find.confirm=DONE
+find.nomatchMsg=Please check your ID or Name.
+find.id=ID
+find.name2=Name

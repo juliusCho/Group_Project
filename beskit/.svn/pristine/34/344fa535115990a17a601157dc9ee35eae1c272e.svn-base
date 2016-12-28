@@ -1,0 +1,154 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!-- 리스트 스크립트 -->
+<%@ include file="/resources/jsp/script/join_script.jsp"%>
+
+<!-- 공통 헤더 -->
+<%@ include file="/resources/jsp/header.jsp"%>
+
+<!-- 리스트 왼쪽메뉴 -->
+<%@ include file="/resources/jsp/left_menu/join_left.jsp"%>
+
+<!-- 리스트  -->
+	<div id="main_center">
+		<form method="post" id="joinForm">
+			<table id="join_table" align="center">
+				<tr>
+					<td colspan="3" id="join_table_title">회원가입</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2">회원 분류</th>
+					<td id="join_table_td02"><input type="radio" name="mem_country" value=0
+						checked="checked">한국인</td>
+					<td id="join_table_td02"><input type="radio" name="mem_country" value=1>외국인
+					</td>
+				</tr>
+				<tr>
+					<td id="join_table_td02"><input type="radio" name="mem_gender" value=0	checked="checked">남</td>
+					<td id="join_table_td02"><input type="radio" name="mem_gender" value=1>여</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2" >아이디</th>
+					<td id="join_table_td03" colspan="2"><input type="text" name="mem_id" id="mem_id"
+						onkeyup="javascript:noEngInput(this.value);" required autofocus />
+						<input type="button" value="아이디 확인" id="btnIdCheck" /></td>
+				</tr>
+				<tr>
+					<td id="join_table_td04" colspan="2"><span id="infoFont">아이디는 6자~20자 사이로 입력해
+							주세요.</span></td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2"  >비밀번호</th>
+					<td id="join_table_td03" colspan="2"><input type="password" name="pw" id="mem_pw"
+						required /></td>
+				</tr>
+				<tr>
+					<td id="join_table_td04" colspan="2"><span id="infoFont">비밀번호는 10자~20자 사이로
+							입력해 주세요.</span></td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2"  >비밀번호 확인</th>
+					<td id="join_table_td03" colspan="2"><input type="password" id="mem_pwCheck"
+						required /></td>
+				</tr>
+				<tr>
+					<td id="join_table_td04" colspan="2"><span id="infoFont"><div id="pwCheckMsg"></div></span>
+					</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2"  >비밀번호</br>확인질문</th>
+					<td id="join_table_td03" colspan="2"><input type="text" name="mem_pwquestion" id="mem_pwquestion" required />
+					</td>
+				</tr>
+				<tr>
+					<td id="join_table_td04" colspan="2">
+						<select id="pwQuestionSelect">
+								<option selected>질문 선택</option>
+								<option>나의 좌우명은?</option>
+								<option>나의 어릴 적 별명은?</option>
+								<option>중학교 때 나의 단짝친구 이름은?</option>
+								<option>부모님의 결혼기념일은?</option>
+								<option>내 첫사랑의 생일은?</option>
+								<option id="selectWrite">직접 입력</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" >질문 답</th>
+					<td id="join_table_td02" colspan="2"><input type="text" name="mem_pwanswer"
+						id="mem_pwanswer" required /></td>
+				</tr>
+				<tr>
+					<th id="join_table_td01">이름</th>
+					<td id="join_table_td02" colspan="2"><input type="text" name="mem_name"
+						id="mem_name" required /></td>
+				</tr>
+				<tr id="phoneOn">
+					<th id="join_table_td01" rowspan="2"><div id="phoneTitle"></div></th>
+					<td id="join_table_td03" colspan="2"><div id="phoneSection"></div></td>
+				</tr>
+				<tr id="phoneOn">
+					<td id="join_table_td04" colspan="2"><span id="infoFont"><div id="phoneCheckMsg"></div></span>
+					</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01">이메일</th>
+					<td id="join_table_td02" colspan="2"><input type="text" name="email1" id="email1"
+						onkeydown="javascript:noEngInput(this.value);" required /> @ <input
+						type="text" name="email2" id="email2"
+						onkeydown="javascript:noEngInput(this.value);" required /> 
+						<select id="emailSelect">
+							<option selected>이메일 선택</option>
+							<option>gmail.com</option>
+							<option>hotmail.com</option>
+							<option>naver.com</option>
+							<option>daum.net</option>
+							<option>hanmail.net</option>
+							<option>nate.com</option>
+							<option id="selectWrite">직접 입력</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2"  >닉네임</th>
+					<td id="join_table_td03" colspan="2"><input type="text" name="mem_nick"
+						id="mem_nick" required /></td>
+				</tr>
+				<tr>
+					<td id="join_table_td04" colspan="2">
+						<span id="infoFont"><div id="nickCheckMsg"></div></span>
+					</td>
+				</tr>
+				<tr>
+					<th id="join_table_td01" rowspan="2">프로필 사진</th>
+					<td id="join_table_td05" rowspan="2" align="center"><input type="image" id="profilePic"
+						src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" style="width: 100px; height: 100px;" alt="이미지를 불러올 수 없습니다" />
+					</td>
+					<td valign="bottom" id="join_table_td05">
+						<input type="button" class="button_style_03" id="insertPic"	value="사진 업로드" />
+					</td>
+				</tr>
+				<tr>
+					<td valign="top" id="join_table_td06"><input class="button_style_03" type="button" id="deletePic" value="사진 삭제" /></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="hidden" name="mem_pic" id="mem_pic" />
+					</td>
+				</tr>
+				<tr>
+					<td id="join_table_td07" height="60" colspan="3" align="center">
+						<input class="button_style_02" type="submit" value="가입" id="joinOk" />
+						<input class="button_style_02" type="reset" value="재작성" /> 
+						<input class="button_style_02" type="button" value="취소" onclick="javascript:history.back();" />
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br/><br/><br/>
+	</div>
+<!-- 공통 우측메뉴 -->
+<%@ include file="/resources/jsp/right_menu.jsp" %>		
+		
+<!-- 공통 풋터 -->
+<%@ include file="/resources/jsp/footer.jsp" %>

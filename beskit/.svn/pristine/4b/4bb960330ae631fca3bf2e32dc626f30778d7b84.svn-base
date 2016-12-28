@@ -1,0 +1,368 @@
+@CHARSET "UTF-8";
+
+/* ------------------------------------ 통합 적용 -------------------------------------- */
+body {
+	background-color: #fafafa;
+	font: 15px/1.2 맑은 고딕, Malgun Gothic, Dotum, Verdana, AppleGothic,
+		Sans-serif;
+	color: #666;
+	margin: 0;
+	padding: 0;
+	background-image: url('../img/sub/sub_bg.jpg');
+	background-repeat: repeat-x;
+}
+
+#noArticleMsg {
+	text-align: center;
+	width: 600px;
+}
+
+.likeOk {
+	color: red;
+}
+
+/* ------------------------------------ body 전체 -------------------------------------- */
+/* sub 전체 감싸는 영역 */
+#sub_main {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+/* ------------------------------------ header area ------------------------------------ */
+
+/* sub_header  */
+#header_menu {
+	width: 1000px;
+	height: 77px;
+}
+
+#articleTitle {
+	color: gray;
+	font-size: 10px;
+}
+
+#head_menu_Font {
+	color: #474747;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#head_logout_Font {
+	color: #ff0084;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.likeOk {
+	color: red;
+}
+
+/* ------------------------------------ main(left, list, right) ------------------------ */
+/* body 전체 영역  */
+#sub_body {
+	position: relative;
+	width: 1000px;
+	margin: 0;
+}
+/* ------------------------------------ left area -------------------------------------- */
+/* body left 영역  */
+#main_left {
+	position: relative;
+	float: left;
+	width: 200px;
+	margin-top: 20px;
+}
+
+#left_menu {
+	width: 190px;
+}
+
+#left_menu a {
+	width: 150px;
+	margin-bottom: 5px;
+}
+
+#profile img {
+	border-radius:10px;
+}
+
+#profile {
+	padding-bottom:20px;
+}
+
+/* ------------------------------------ list ------------------------------------------- */
+/* body list 영역  */
+#main_center {
+	position: relative;
+	float: left;
+	width: 600px;
+	margin-top: 20px;
+}
+
+/* ------------------------------------ list 글쓰기 ------------------------------------ */
+/* 글쓰기 전체 영역  */
+#insert_text {
+	height: 195px;
+	width: 600px;
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+	border-collapse: collapse;
+	background-color: #ffffff;
+}
+
+/* 글쓰기 부분 타이틀 */
+#info_text {
+	text-align: center;
+	font-size: 18px;
+	color: #bdbdbd;
+	height: 30px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border: 1px solid #efefef;
+	border-collapse: collapse;
+	background-color: #ffffff;
+}
+
+/* 사진첨부 td */
+#insertImg_text_td {
+	height: 35px;
+}
+
+/* 사진첨부 텍스트 */
+#insertImg_text {
+	padding-left: 45px;
+	font-size: 15px;
+	color: #3383bb;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#insertImg_text:hover {
+	color: #e46f9d;
+}
+
+/* 사진첨부하기 텍스트 영역 */
+.picUpload {
+	font-size: 12px;
+	text-align: left;
+	padding: 10px;
+}
+
+/* textarea를 감싸는 영역 */
+#text_box textarea {
+	margin-left: 45px;
+}
+
+/* 600자 텍스트 */
+#artTextLength {
+	font-size: 12px;
+	color: #c0c0c0;
+	margin: 0 auto;
+}
+/* text_box안의 textarea 박스 */
+#art_content {
+	border: 1px solid #efefef;
+	border-collapse: collapse;
+	background-color: #ffffff;
+}
+/* 글쓰기 버튼 영역 */
+#btn_insert {
+	margin-top: 5px;
+	padding-right: 50px;
+	height: 35px;
+}
+
+/* ------------------------------------ 리스트 view --------------------------------- */
+/* 이미지 보이는 역역 */
+#view_img {
+	padding-top: 30px;
+}
+
+/* ----------------------------------- right area------------------------------------ */
+/* body right 영역  */
+#main_right {
+	position: relative;
+	float: left;
+	width: 200px;
+	margin-top: 20px;
+}
+
+/* list table  */
+#list_table {
+	border: 1px solid #efefef;
+	background-color: #ffffff;
+	border-collapse: collapse;
+	margin-top: 30px;
+	width: 600px;
+}
+/* list table의 닉네임 출력 영역  */
+#list_nick_td {
+	height: 35px;
+	font-size: 15px;
+	border: 1px solid #efefef;
+	border-collapse: collapse;
+}
+
+#list_nick_td a {
+	color: #3383bb;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* list table 내용 출력  */
+#view_img {
+	margin: 0;
+}
+
+#list_content {
+	width: 600px;
+	padding: 10px 47px 10px 47px;
+	word-wrap:break-word; word-break:break-all;
+}
+
+#up_del_btn {
+	font-size:12px;
+	height: 35px;
+	padding-right: 50px;
+	border-collapse: collapse;
+}
+
+#btnInsertArticle {
+	font-size:12px;
+}
+
+/* comment 접혔을때 보이는 부분 table */
+#comment_close {
+	width: 600px;
+	border: 1px solid #efefef;
+	border-collapse: collapse;
+	background-color: #ffffff;
+	margin: 0px 0px 20px 0px;
+}
+/* 뎃글 총 수 */
+#comment_number {
+	height: 35px;
+	padding-top: 5px;
+}
+
+#comment_number a {
+	color: #3383bb;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* comment 펼쳤을때 보이는 부분 table */
+#comment_open {
+	width: 550px;
+}
+
+/* 뎃글안에서 하트, 수정, 삭제 감싸는 영역 */
+#comment_update_box {
+	float: right;
+}
+
+#comment_update_box a {
+	color: #e56f71;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* 뎃글 닉네임 영역 */
+#comment_nick {
+	border-top: 1px dotted #dadada;
+	border-collapse: collapse;
+	height: 20px;
+	width: 70px;
+}
+
+#comment_open tr td a {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/*	뎃글 comment 영역	*/
+#comment_content {
+	border-top: 1px dotted #dadada;
+	border-collapse: collapse;
+	padding: 10px 5px 10px 5px;
+	height: 20px;
+	width: 405px;
+}
+
+#comment_text_up {
+	font-weight: bold;
+	font-size: 10px;
+	text-decoration: none;
+	color: #e56f71;
+}
+
+/*	뎃글 regdate 영역	*/
+#regdate {
+	width: 75px;
+	font-size: 13px;
+	border-top: 1px dotted #dadada;
+	border-collapse: collapse;
+}
+
+/*	뎃글 입력 영역 위에 라인	*/
+#insert_comment {
+	border-top: 1px dotted #dadada;
+	border-collapse: collapse;
+	height: 40px;
+}
+/* ------------------------------------ footer area ----------------------------------- */
+/* 메인 풋터 영역 */
+#main_footer {
+	width: 1000px;
+	clear: left;
+}
+
+#main_footer table tr td {
+	width: 80px;
+	height: 30px;
+}
+
+#main_footer table tr td a {
+	color: #474747;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#main_footer table tr td a img {
+	width: 38px;
+	height: 25px;
+}
+
+
+/* -------------------------- */
+#corporate {
+	font-family: Malgun Gothic;
+	color: color:#3383bb;
+	font-weight: bold;
+	font-size: 14px;
+	height: 35px;
+}
+
+/*		find id, pw 		*/
+#tabs {
+	background-color: #ffffff;
+	height: 450px;
+}
+
+/*		프렌드 리스트 		*/
+#friend_list {
+	background-color: #ffffff;
+	height: 500px;
+}
+
+/*		뎃글 더보기 		*/
+#more_btn {
+	height: 27px;
+	width: 500px;
+	margin-top: 25px;
+	padding-top: 5px;
+	border: 1px solid #3383bb;
+	border-radius: 50px;
+	color: #3383bb;
+}
