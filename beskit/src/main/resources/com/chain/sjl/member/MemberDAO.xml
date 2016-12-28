@@ -6,12 +6,6 @@
 
 <mapper namespace="com.chain.sjl.member.MemberDAO">
 	
-	<select id="checkBusiness" parameterType="String" resultType="String">
-		select mem_business
-		from   t_member
-		where  mem_business = #{business}
-	</select>
-	
 	<select id="idCheck" parameterType="String" resultType="String">
 		select mem_id
 		from   t_member
