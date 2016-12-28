@@ -1,3 +1,53 @@
+*** BeSkit : 
+한국인과 한국을 좋아하는, 혹은 거주중인 외국인이 서로 소통할 수 있는 소셜네트워크 플랫폼
+SNS platform for Koreans & non-Koreans who are interested or living in Korea to socialize
+
+
+
+*** 프로젝트 참여 인원 및 진행 계기 :
+3명 / [NCS]웹/모바일 개발자 양성과정 내 진행한 프로젝트
+
+*** Number of Participants & Trigger for Start in this Project :
+3 / this was a project at [NCS]Web/Mobile Developer Training Course
+
+
+
+*** 내가 구현한 기능 및 페이지 :
+1) doFilter를 이용한 로그인 세션 인증 및 각종 페이지 접근 처리
+2) jstl의 fmt객체를 이용한 사이트전체 한/영 언어 변경 기능
+3) Maven Repository 설정
+4) 사이트 전체 경로 및 프로젝트 패키지&폴더 구성 설정
+5) Mybatis 설정
+6) web.xml filter를 적용하여 각종 에러 페이지 설정 및 구현
+7) 회원가입 및 정보 수정 기능/페이지 구현
+8) 홈 기능/페이지 전체 구현
+9) 회원페이지 기능/페이지 전체 구현
+10) 만남의광장 기능/페이지 전체 구현
+11) 이미지파일 업로드/출력 구현 
+
+*** Functions & Pages I constructed :
+1) Login session verification & several page accesses control using doFilter
+2) Overall website's Korean/English language switching function using fmt object in jstl
+3) Maven Repository settings & importations
+4) Set up overall website's page links & project's packages/folders
+5) Set up Mybatis
+6) Made pages for various errors using filter in web.xml
+7) Built member registration & information modification functions/pages
+8) Built the overall functions/pages for HOME
+9) Built the overall functions/pages for MEMBER PAGE
+10) Built the overall functions/pages for MEETUP SQUARE
+11) Made the function for uploading/displaying image files 
+
+
+
+
+
+
+
+
+************************페이지경로/Page Link***************************
+
+
 한  글           = sjl/member/kor
 영  문           = sjl/member/eng
 가입정보입력/확인= sjl/member/join
