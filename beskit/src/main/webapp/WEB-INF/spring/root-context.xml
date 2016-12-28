@@ -71,24 +71,27 @@
 	p:mapperInterface="com.chain.sjl.chatlist.ChatListDAO"
 	p:sqlSessionFactory-ref="sqlChatList"/>
 	
-	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
-	<property value="smtp.gmail.com" name="host"/>
-	<property value="587" name="port"/>
-	<property value="beskitchain@gmail.com" name="username"/>
-	<property value="dldydghdlqslek" name="password"/>
-	<property name="javaMailProperties">
-	<props>
-	<prop key="mail.smtp.starttls.enable">true</prop>
-	</props>
-	</property>
+	
+	
+	
+	
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender"
+	p:host="smtp.gmail.com"
+	p:port="587"
+	p:username="beskitchain@gmail.com"
+	p:password="dldydghdlqslek">
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
 	</bean>
 	
 	
 	
 	
-	<bean id="multipartResolver" scope="prototype" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="defaultEncoding" value="UTF-8"/>
-		<property name="maxUploadSize" value="50000000"/>
+	<bean id="multipartResolver" scope="prototype" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+	p:defaultEncoding="UTF-8"
+	p:maxUploadSize="50000000"/>
 		<!-- 1kbyte = 1024 (2^10) -->
-	</bean>
 </beans>
