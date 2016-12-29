@@ -60,12 +60,13 @@ public class Auth extends GenericFilterBean {
 			if(session.getAttribute("memberInfo") != null) {
 				memberVO = (MemberVO) session.getAttribute("memberInfo");
 				
-				if(list.get(1).equals("article")) {
+				if(list.get(1).equals("article") || list.get(1).equals("square") ||
+						list.get(1).equals("friend")) {
 					if(!list.get(2).equals(String.valueOf(memberVO.getMem_no()))) {
 						logger.info("비정상적 접속 감지");
 						if(String.valueOf(session.getAttribute("country")).equals("ko_KR"))
-							request.setAttribute("msg", "다른 회원의 홈은 접근 불가능합니다");
-						else request.setAttribute("msg", "You cannot access to others' HOME");
+							request.setAttribute("msg", "다른 회원의 관련 페이지는 접근 불가능합니다");
+						else request.setAttribute("msg", "You cannot access to other users&#39; relational pages");
 						request.setAttribute("url", "/sjl/article/" + memberVO.getMem_no() + "/");
 						RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/result.jsp");
 						dispatcher.forward(request, response);
@@ -73,7 +74,7 @@ public class Auth extends GenericFilterBean {
 					}
 					chain.doFilter(request, response);
 					return;
-				} else if(list.get(1).equals("chat")) {
+				} else if(list.get(1).equals("chat") || list.get(1).equals("chatlist")) {
 					if(!list.get(2).equals(String.valueOf(memberVO.getMem_no()))) {
 						logger.info("비정상적 접속 감지");
 						if(String.valueOf(session.getAttribute("country")).equals("ko_KR"))
