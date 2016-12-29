@@ -68,7 +68,7 @@
 				<div id="profile">
 					<table>
 						<tr>
-							<td colspan="2">
+							<td colspan="2" align="center">
 								<c:choose>
 									<c:when test="${memberBasicInfo.mem_pic eq null || memberBasicInfo.mem_pic eq ''}">
 										<img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" />

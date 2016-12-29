@@ -13,7 +13,7 @@
 		<fmt:bundle basename="${sessionScope.basename}">
 			<div id="left_menu">
 				<h1>FRIENDS</h1>
-				<div id="profile">
+				<div id="profile" align="center">
 					<c:choose>
 						<c:when test="${sessionScope.memberInfo.mem_pic eq null || sessionScope.memberInfo.mem_pic eq ''}">
 							<img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>" />
