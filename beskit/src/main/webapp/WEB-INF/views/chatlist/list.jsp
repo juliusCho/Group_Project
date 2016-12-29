@@ -27,11 +27,11 @@
 					<td id="chat_list_icon" align="center"><span class="ui-icon ui-icon-star"></span></td>
 					<td id="chat_list_pic">
 					    <c:choose>
-						    <c:when test="${vo.mem_pic ne null}">
-						   	   <img src="<c:url value="/member/${vo.mem_pic}"/> ">
+						    <c:when test="${vo.mem_pic eq null || vo.mem_pic eq ''}">
+						  	   <img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>"/>
 						    </c:when>
 						    <c:otherwise>
-						  	   <img src="<c:url value="/resources/img/thumbnail/thumb_defaultpic.jpg"/>"/>
+						   	   <img src="<c:url value="/member/${vo.mem_pic}"/> ">
 						    </c:otherwise>
 					    </c:choose>
 					</td>
