@@ -65,7 +65,7 @@
 					articleList += '</td></tr>';
 					
 					//게시물에 사진이 첨부되어 있을 시
-					if(val['art_pic'] != null) {
+					if(val['art_pic'] != null && val['art_pic'] != '') {
 						articleList += '<tr align="center" valign="top"><td id="view_img">';
 						articleList += '<img src="<c:url value="/member/' + val['art_pic'] + '"/>" alt=""/>';
 						articleList += '</td></tr>';
