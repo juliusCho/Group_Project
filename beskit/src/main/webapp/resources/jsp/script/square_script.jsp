@@ -303,6 +303,7 @@
 	//댓글 수정을 누를 시
 	function updateComment(art_no, com_no) {
 		comUpdateDisplay[0] = art_no;
+		comUpdateDisplay[1] = com_no;
 		commentList(art_no, moreComBtnNo);
 	}
 	

@@ -30,7 +30,7 @@
 	      url:'../../friend/${mem_no}/insertWaitingFriend',
 	      data:{mymem_no:'${sessionScope.memberInfo.mem_no}'}
 	   }).done(function(data){
-	      if(data.msg=='<fmt:message key="friend.success"/>'){
+	      if(data.msg=='Success'){
 	         alert('<fmt:message key="friend.addsuccess"/>');
 	         location.href="./";
 	      }else{

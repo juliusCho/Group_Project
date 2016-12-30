@@ -230,3 +230,6 @@ add constraint c_friend_uk unique(mem_no, fri_no);
 alter table t_chat_list
 add constraint t_chat_uk unique(cha_list_no, mem_no);
 
+
+
+select * from t_waiting_friend;

@@ -113,9 +113,7 @@ public class FriendController {
 			}
 			friendService.insertWaitingFriend(map);
 			
-			if(String.valueOf(session.getAttribute("country")).equals("ko_KR"))
-				myMap.put("msg","성공");
-			else myMap.put("msg","Success");
+			myMap.put("msg","Success");
 			return myMap;
 		} catch (Exception e) {
 			myMap.put("msg", e.getMessage());

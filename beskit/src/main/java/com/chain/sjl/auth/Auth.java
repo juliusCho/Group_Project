@@ -60,8 +60,7 @@ public class Auth extends GenericFilterBean {
 			if(session.getAttribute("memberInfo") != null) {
 				memberVO = (MemberVO) session.getAttribute("memberInfo");
 				
-				if(list.get(1).equals("article") || list.get(1).equals("square") ||
-						list.get(1).equals("friend")) {
+				if(list.get(1).equals("article") || list.get(1).equals("square")) {
 					if(!list.get(2).equals(String.valueOf(memberVO.getMem_no()))) {
 						logger.info("비정상적 접속 감지");
 						if(String.valueOf(session.getAttribute("country")).equals("ko_KR"))
