@@ -44,7 +44,6 @@ CREATE TABLE t_article
 	art_content varchar2(4000) NOT NULL,
 	art_like number(5) DEFAULT 0 NOT NULL,
 	art_regdate date DEFAULT sysdate NOT NULL,
-	art_readcnt number(5) DEFAULT 0 NOT NULL,
 	art_com_cnt number(4) DEFAULT 0 NOT NULL,
 	art_pic varchar2(1000),
 	mem_no number NOT NULL,

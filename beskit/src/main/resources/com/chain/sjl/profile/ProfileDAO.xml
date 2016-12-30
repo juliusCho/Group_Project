@@ -7,7 +7,7 @@
 <mapper namespace="com.chain.sjl.profile.ProfileDAO">
 	
 	<select id="listArticle" parameterType="long" resultType="ArticleVO">
-		select a.art_no, a.art_content, a.mem_no, a.art_like, art_readcnt, art_com_cnt, a.art_pic, a.mem_nick,
+		select a.art_no, a.art_content, a.mem_no, a.art_like, art_com_cnt, a.art_pic, a.mem_nick,
 			   case to_char(a.art_regdate, 'YYYY-MM-DD') when to_char(sysdate, 'YYYY-MM-DD')
 		   	   	   	   								     then 'Today, ' || to_char(a.art_regdate, 'HH:MI:SS')
 		   	   	   	   								     else to_char(a.art_regdate, 'YYYY-MM-DD')

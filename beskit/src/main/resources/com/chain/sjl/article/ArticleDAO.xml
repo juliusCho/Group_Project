@@ -7,9 +7,9 @@
 <mapper namespace="com.chain.sjl.article.ArticleDAO">
 	
 	<select id="listArticle" parameterType="long" resultType="ArticleVO">
-		select A.art_no, A.art_content, A.art_like, A.art_readcnt, A.art_com_cnt, A.art_pic, A.art_regdate,
+		select A.art_no, A.art_content, A.art_like, A.art_com_cnt, A.art_pic, A.art_regdate,
 			   B.mem_no, A.mem_nick
-		from  (select a.art_no, a.art_content, a.mem_no, a.mem_nick, a.art_like, art_readcnt, art_com_cnt, a.art_pic,
+		from  (select a.art_no, a.art_content, a.mem_no, a.mem_nick, a.art_like, art_com_cnt, a.art_pic,
 			   	      case to_char(a.art_regdate, 'YYYY-MM-DD') when to_char(sysdate, 'YYYY-MM-DD')
 			   	   	   	   								        then 'Today, ' || to_char(a.art_regdate, 'HH:MI:SS')
 			   	   	   	   								        else to_char(a.art_regdate, 'YYYY-MM-DD')
