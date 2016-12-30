@@ -8,7 +8,6 @@ public class ArticleVO implements Serializable {
 	private String art_content;
 	private int art_like;
 	private String art_regdate;
-	private int art_readcnt;
 	private int art_com_cnt;
 	private String art_pic;
 	private long mem_no;
@@ -38,12 +37,6 @@ public class ArticleVO implements Serializable {
 	public void setArt_regdate(String art_regdate) {
 		this.art_regdate = art_regdate;
 	}
-	public int getArt_readcnt() {
-		return art_readcnt;
-	}
-	public void setArt_readcnt(int art_readcnt) {
-		this.art_readcnt = art_readcnt;
-	}
 	public int getArt_com_cnt() {
 		return art_com_cnt;
 	}
@@ -72,7 +65,7 @@ public class ArticleVO implements Serializable {
 	@Override
 	public String toString() {
 		return "ArticleVO [art_no=" + art_no + ", art_content=" + art_content + ", art_like=" + art_like
-				+ ", art_regdate=" + art_regdate + ", art_readcnt=" + art_readcnt + ", art_com_cnt=" + art_com_cnt
+				+ ", art_regdate=" + art_regdate + ", art_com_cnt=" + art_com_cnt
 				+ ", art_pic=" + art_pic + ", mem_no=" + mem_no + ", mem_nick=" + mem_nick + "]";
 	}
 }
