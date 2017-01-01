@@ -14,7 +14,7 @@
 		select cha_no, cha_content, to_char(cha_regdate,'MM-DD HH24:MI') as cha_regdate, cha_confirm, mem_no, cha_list_no
 		from t_chat
 		where cha_list_no=#{cha_list_no}
-		order by cha_no desc
+		order by cha_no asc
 	</select>
 	
 	<update id="updateRegdate" parameterType="long">
